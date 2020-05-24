@@ -3,6 +3,17 @@
     "test": {
       "addons":[
         "cleardb:ignite"
+      ],
+      "buildpacks": [
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+        },
+        {
+          "url": "heroku/ruby"
+        },
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
+        }
       ]
     }
   }
