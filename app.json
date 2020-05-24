@@ -1,7 +1,9 @@
 {
-  "addons": [
-    "cleardb:punch",
-    "papertrail",
-  ],
-  "name": "cosplayers",
+  "environments": {
+    "test": {
+      "addons":[
+        "cleardb:ignite"
+      ]
+    }
+  }
 }
