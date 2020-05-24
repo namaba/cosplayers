@@ -1,0 +1,7 @@
+{
+  "addons": [
+    "cleardb:punch",
+    "papertrail",
+  ],
+  "name": "cosplayers",
+}
