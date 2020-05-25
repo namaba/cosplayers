@@ -1,0 +1,17 @@
+nav.navbar.navbar-expand-lg.navbar-white.bg-white
+  a.navbar-brand href="#"  Cosplayers
+  button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
+    span.navbar-toggler-icon
+
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item= link_to 'HOME', root_path, class: "nav-link #{controller.is_a?(WelcomeController) ? 'active' : nil}"
+      li.nav-item= link_to '番組表', root_path, class: "nav-link"
+      li.nav-item= link_to 'タレント一覧', root_path, class: "nav-link"
+      li.nav-item= link_to 'お問い合わせ', root_path, class: 'nav-link'
+
+
+
+
+
+
