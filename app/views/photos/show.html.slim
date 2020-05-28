@@ -1,0 +1,42 @@
+section.row.p-3
+  .col-7
+    = image_tag 'araki_2', width: '100%'
+  .col-5
+    .card.mb-3
+      .card-body
+        .card-title  新木優子
+        p
+          | 写真に関する内容
+          | サンプルサンプルサンプルサンプルサンプルサンプル
+          | サンプルサンプルサンプルサンプルサンプルサンプル
+          | サンプルサンプルサンプルサンプルサンプルサンプル
+          | サンプルサンプルサンプルサンプルサンプルサンプル
+
+    .card
+      .card-body
+        section.mb-3
+          .mb-1= link_to '新規リクエスト', root_path, class: 'btn btn-raised btn-success w-100'
+          = link_to 'フォロー', root_path, class: 'btn btn-outline-info w-100'
+        table.table.table-borderless
+          tr
+            th リクエスト料金
+            td 3,000円
+          tr
+            th リクエスト総数
+            td 123
+          tr
+            th 対応率
+            td 100%
+
+
+
+
+.card
+  .card-body
+    .card-title おすすめ
+    .d-flex.flex-wrap
+      - 6.times do |i|
+        .col-2
+          = image_tag 'niki', width: '100%'
+          p niki
+
