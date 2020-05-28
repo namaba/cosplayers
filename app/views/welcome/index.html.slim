@@ -1,30 +1,44 @@
 .container
-  section.mb-5
-    p 最新の写真
+  .card.mb-4
+    .card-body
+      ul.list-unstyled.mb-0
+        li 2020/5/21 新機能追加のお知らせ
+        li 2020/5/11 新機能追加のお知らせ
+        li 2020/5/1  モデルマッチングサイトリリース
+  section.mb-4
+    .d-flex.justify-content-between.align-items-center.mb-2
+      p.mb-0 最新の写真
+      span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
       - 12.times do |i|
         .col-2
           = image_tag 'niki', width: '100%'
           p niki
 
-  section.mb-5
-    p 最新の動画
+  section.mb-4
+    .d-flex.justify-content-between.align-items-center.mb-2
+      p.mb-0 最新の動画
+      span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
       - 12.times do |i|
         .col-2
           = image_tag 'sasakinozomi.jpg', width: '100%'
           p niki
 
-  section.mb-5
-    p 最新の写真
+  section.mb-4
+    .d-flex.justify-content-between.align-items-center.mb-2
+      p.mb-0 人気モデル
+      span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
       - 12.times do |i|
         .col-2
           = image_tag 'niki', width: '100%'
           p niki
 
-  section.mb-5
-    p リクエスター
+  section.mb-4
+    .d-flex.justify-content-between.align-items-center.mb-2
+      p.mb-0 プライムリクエスター
+      span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
       - 12.times do |i|
         .col-2

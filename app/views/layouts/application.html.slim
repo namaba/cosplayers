@@ -3,7 +3,7 @@ html[lang="ja"]
   head
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
-    title harbor
+    title cosplayers
     == csrf_meta_tags
     == csp_meta_tag
     == stylesheet_pack_tag 'application', media: 'all'
@@ -12,5 +12,5 @@ html[lang="ja"]
       $(document).ready(function() { $('body').bootstrapMaterialDesign();});
   body
     == render 'layouts/header'
-    main.py-3
+    main
       == yield
