@@ -1,0 +1,26 @@
+.card
+  .card-body
+    .media.py-3.px-5.bg-white
+      = image_tag 'sasakinozomi.jpg', size: '100', class: 'rounded-circle mr-5'
+      .media-body
+        h5.mt-0 佐々木 希
+        | 佐々木 希は、日本の女優、ファッションモデル。旧姓同じ。本名は渡部 希。 秋田県秋田市出身。トップコート所属。夫はアンジャッシュの渡部建
+section.row.p-3
+  .col-4
+    .card
+      .card-body
+        section.mb-3
+          = link_to 'フォロー', root_path, class: 'btn btn-outline-info w-100'
+        table.table.table-borderless
+          tr
+            th リクエスト数
+            td 123
+
+  .col-8
+    .card
+      .card-body
+        .card-title リクエスト
+        .d-flex.flex-wrap
+          - 12.times do |i|
+            .col-3.mb-2
+              = image_tag 'niki', width: '100%'
