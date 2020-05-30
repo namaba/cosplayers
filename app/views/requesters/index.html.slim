@@ -1,0 +1,9 @@
+.container.p-3
+  .bg-white
+    h1 Requesters
+  .d-flex.flex-wrap
+    - 48.times do |i|
+      .col-2
+        = link_to artist_path(1) do
+          = image_tag 'sasakinozomi.jpg', width: '100%'
+          p 佐々木　希

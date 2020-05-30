@@ -7,40 +7,33 @@
         li 2020/5/1  モデルマッチングサイトリリース
   section.mb-4
     .d-flex.justify-content-between.align-items-center.mb-2
-      p.mb-0 最新の写真
+      p.mb-0 New Photos
       span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
       - 12.times do |i|
         .col-2
-          = image_tag 'niki', width: '100%'
-          p niki
+          = link_to photo_path(1) do
+            = image_tag 'niki', width: '100%'
+            p niki
 
   section.mb-4
     .d-flex.justify-content-between.align-items-center.mb-2
-      p.mb-0 最新の動画
+      p.mb-0 Artists
       span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
       - 12.times do |i|
         .col-2
-          = image_tag 'sasakinozomi.jpg', width: '100%'
-          p niki
+          = link_to artist_path(1)
+            = image_tag 'niki', width: '100%'
+            p niki
 
   section.mb-4
     .d-flex.justify-content-between.align-items-center.mb-2
-      p.mb-0 人気モデル
+      p.mb-0 Requesters
       span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
       - 12.times do |i|
         .col-2
-          = image_tag 'niki', width: '100%'
-          p niki
-
-  section.mb-4
-    .d-flex.justify-content-between.align-items-center.mb-2
-      p.mb-0 プライムリクエスター
-      span.small= link_to 'もっとみる', root_path
-    .d-flex.flex-wrap
-      - 12.times do |i|
-        .col-2
-          = image_tag 'niki', width: '100%'
-          p niki
+          = link_to requester_path(1)
+            = image_tag 'niki', width: '100%'
+            p niki

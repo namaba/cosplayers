@@ -30,7 +30,8 @@ section.row.p-3
         .d-flex.flex-wrap
           - 12.times do |i|
             .col-3.mb-2
-              = image_tag 'niki', width: '100%'
+              = link_to photo_path(1)
+                = image_tag 'niki', width: '100%'
 
     .card
       .card-body
@@ -38,5 +39,6 @@ section.row.p-3
         .d-flex.flex-wrap
           - 12.times do |i|
             .col-3.mb-2
-              = image_tag 'darenogare_1', width: '100%'
+              = link_to photo_path(1)
+                = image_tag 'darenogare_1', width: '100%'
 

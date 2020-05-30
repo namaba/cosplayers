@@ -14,9 +14,9 @@ nav.navbar.navbar-expand-lg.navbar-white.bg-white
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item= link_to 'HOME', root_path, class: "nav-link #{controller.is_a?(WelcomeController) ? 'active' : nil}"
-      li.nav-item= link_to '人気モデル', root_path, class: "nav-link"
-      li.nav-item= link_to '新規モデル', root_path, class: "nav-link"
-      li.nav-item= link_to 'プライムリクエスター', root_path, class: "nav-link"
+      li.nav-item= link_to 'model', artists_path, class: "nav-link"
+      li.nav-item= link_to 'Photo', photos_path, class: "nav-link"
+      li.nav-item= link_to 'requesters', requesters_path, class: "nav-link"
       li.nav-item= link_to 'お問い合わせ', root_path, class: 'nav-link'
     = button_to 'ログイン', root_path, class: 'btn btn-raised btn-primary'
 
