@@ -12,5 +12,7 @@ html[lang="ja"]
       $(document).ready(function() { $('body').bootstrapMaterialDesign();});
   body
     == render 'layouts/header'
+    p.notice= notice
+    p.alert= alert
     main
       == yield

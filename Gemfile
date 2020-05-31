@@ -37,6 +37,11 @@ gem 'carrierwave'
 gem 'seed-fu'
 gem 'dotenv-rails'
 gem 'cocoon'
+# devise関連
+gem 'devise'
+gem 'omniauth-twitter'
+# env
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
