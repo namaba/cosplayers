@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :artists, only: %i[index show]
   resources :requesters, only: %i[index show]
   resources :photos
+  resources :users
 end
