@@ -1,0 +1,19 @@
+= form_with model: @live, local: true  do |f|
+  .form-group
+    = f.label Request.human_attribute_name(:genre), class: 'bmd-label-floating'
+    = f.select :genre, Request.genres_i18n.invert, {selected: :photo}, class: 'form-control', required: true
+  .form-group
+    = f.label Request.human_attribute_name(:amount), class: 'bmd-label-floating'
+    = f.text_field :amount, class: 'form-control', required: true
+  .form-group
+    = f.label Request.human_attribute_name(:description), class: 'bmd-label-floating'
+    = f.text_area :amount, rows: 10, class: 'form-control', required: true
+  .form-group
+    = f.label Request.human_attribute_name(:accept_deadline), class: 'bmd-label-floating'
+    = f.select :accept_deadline, [['7日', 7],['14日', 14]], {selected: 7}, class: 'form-control', required: true
+  .form-group
+    = f.label Request.human_attribute_name(:delivery_deadline), class: 'bmd-label-floating'
+    = f.select :delivery_deadline, [['7日', 7],['14日', 14]], {selected: 7}, class: 'form-control', required: true
+
+  = f.submit '送信', class: 'btn btn-success btn-raised w-25'
+

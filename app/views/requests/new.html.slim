@@ -1,0 +1,30 @@
+.card
+  .card-body
+    .media.py-3.px-5.bg-white
+      = image_tag 'araki', size: '100', class: 'rounded-circle mr-5'
+      .media-body
+        h5.mt-0 新木優子
+        | 日本の女優、ファッションモデルである。愛称は、ゆんぴょ。 東京都出身。スターダストプロモーション所属。
+section.row.p-3
+  .col-4
+    .card
+      .card-body
+        section.mb-3
+          .mb-1= link_to '新規リクエスト', nil, class: 'btn btn-raised btn-success w-100'
+          = link_to 'フォロー', nil, class: 'btn btn-outline-info w-100'
+        table.table.table-borderless
+          tr
+            th リクエスト料金
+            td 3,000円
+          tr
+            th リクエスト総数
+            td 123
+          tr
+            th 対応率
+            td 100%
+
+  .col-8
+    .card
+      .card-body
+        .card-title 新規リクエスト
+        = render 'form', request: @request

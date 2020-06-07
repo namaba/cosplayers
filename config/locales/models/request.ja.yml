@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      request:
+        accept_deadline: 承認期限
+        amount: 料金
+        delivery_deadline: 納品期限
+        description: 依頼詳細
+        genre: ジャンル
+        is_anonymous: 匿名
+        is_hidden: 公開
+        status: 進捗ステータス
+  enums:
+    request:
+      genre:
+        photo: 写真
+        movie: 動画
