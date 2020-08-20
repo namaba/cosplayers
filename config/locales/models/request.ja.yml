@@ -2,9 +2,7 @@ ja:
   activerecord:
     attributes:
       request:
-        accept_deadline: 承認期限
         amount: 料金
-        delivery_deadline: 納品期限
         description: 依頼詳細
         genre: ジャンル
         is_anonymous: 匿名

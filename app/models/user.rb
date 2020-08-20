@@ -40,6 +40,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers:[:twitter]
 
+  has_many :requests
+
   def self.from_omniauth(auth)
     find_or_initialize_by(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]

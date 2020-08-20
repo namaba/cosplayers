@@ -13,16 +13,16 @@
 ActiveRecord::Schema.define(version: 2020_06_07_064846) do
 
   create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "genre", default: "photo", null: false
     t.integer "amount", default: 0, null: false
     t.text "description", null: false
-    t.integer "accept_deadline", default: 0, null: false
-    t.integer "delivery_deadline", default: 0, null: false
     t.boolean "is_anonymous", default: false, null: false
     t.boolean "is_hidden", default: false, null: false
     t.string "status", default: "offering", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -54,4 +54,5 @@ ActiveRecord::Schema.define(version: 2020_06_07_064846) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "requests", "users"
 end
