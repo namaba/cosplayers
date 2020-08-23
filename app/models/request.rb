@@ -28,4 +28,13 @@ class Request < ApplicationRecord
     movie: 'movie',
   }
 
+  enum status: {
+    requesting: 'requesting',
+    accepted: 'accept',
+    canceled: 'canceled',
+    declined: 'declined',
+    expired: 'expired',
+    canceled_by_manage: 'canceled_by_manage'
+  }
+
 end
