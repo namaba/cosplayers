@@ -1,0 +1,39 @@
+ja:
+  today: 今日
+  tomorrow: 明日
+  time:
+    formats:
+      default: ! '%Y/%m/%d'
+      long: ! '%Y年%m月%d日 %H:%M'
+      short: ! '%Y/%m/%d %H:%M'
+      short_noyear: ! '%-m/%-d %H:%M'
+      calendars_date: ! '%Y年%-m月%-d日(%a)'
+      calendars_short_date: ! '%-m月%-d日(%a)'
+      calendars_datetime: ! '%Y年%-m月%-d日(%a) %-H:%M'
+      calendars_short_datetime: ! '%-m月%-d日(%a) %-H:%M'
+      long_datetime: ! '%Y年%-m月%-d日 %-H:%M'
+      short_datetime: ! '%-m月%-d日 %-H:%M'
+      short_date: ! '%-m月%-d日'
+      mini_date: ! '%-m/%-d'
+  date:
+    formats:
+      calendars_date: ! '%Y年%-m月%-d日(%a)'
+      calendars_short_date: ! '%-m月%-d日(%a)'
+      long_date: ! '%Y年%-m月%-d日'
+      short_date: ! '%-m月%-d日'
+      mini_date: ! '%-m/%-d'
+  views:
+    pagination:
+      first:    "&laquo;"
+      last:     "&raquo;"
+      previous: "&lsaquo;"
+      next:     "&rsaquo;"
+      truncate: "&hellip;"
+  errors:
+    messages:
+      must_contain_at_least_one_number: に数字を1つ以上含めてください
+      must_contain_at_least_one_letter: に英字を1つ以上含めてください
+      invalid_email: を正しく入力してください
+      mx_message: にメールを配信できません。正しく入力して下さい。
+      user_email_duplicate: '入力されたメールアドレスは既に会員登録されています。%{link}'
+      login_link_text: ログインはこちら

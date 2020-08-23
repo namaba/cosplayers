@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :requesters, only: %i[index show]
   resources :photos
   resources :users
+  resources :requests do
+    get :thank, on: :collection
+  end
 end
