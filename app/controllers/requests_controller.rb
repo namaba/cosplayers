@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   def new
-    @request = current_user.requests.build()
+    @request = current_user.sent_requests.build()
   end
 
   def create
@@ -20,11 +20,12 @@ class RequestsController < ApplicationController
   private
   def request_params
     params.required(:request).permit(
+    :artist_id,
       :amount,
       :description,
       :genre,
       :is_anonymous,
-      :is_hidden
+      :is_hidden,
     )
   end
 end
