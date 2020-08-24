@@ -36,7 +36,8 @@ class Request < ApplicationRecord
 
   enum status: {
     requesting: 'requesting',
-    accepted: 'accept',
+    making: 'making',
+    completed: 'completed',
     canceled: 'canceled',
     declined: 'declined',
     expired: 'expired',

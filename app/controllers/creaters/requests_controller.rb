@@ -1,5 +1,10 @@
 class Creaters::RequestsController < ApplicationController
   before_action :set_creater
+
+  def index
+    @reqeusts = creater.reqeusts.requesting
+  end
+
   def new
     @request = current_user.requests.build()
   end
