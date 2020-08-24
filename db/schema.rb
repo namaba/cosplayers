@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_064846) do
+ActiveRecord::Schema.define(version: 2020_08_23_132908) do
+
+  create_table "creaters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "description"
+    t.integer "min_charge"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_creaters_on_user_id"
+  end
 
   create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "requester_id", null: false
-    t.bigint "artist_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "creater_id", null: false
     t.string "genre", default: "photo", null: false
     t.integer "amount", default: 0, null: false
     t.text "description", null: false
@@ -23,8 +32,8 @@ ActiveRecord::Schema.define(version: 2020_06_07_064846) do
     t.string "status", default: "offering", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["artist_id"], name: "index_requests_on_artist_id"
-    t.index ["requester_id"], name: "index_requests_on_requester_id"
+    t.index ["creater_id"], name: "index_requests_on_creater_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -50,12 +59,15 @@ ActiveRecord::Schema.define(version: 2020_06_07_064846) do
     t.string "provider"
     t.string "uid"
     t.string "username"
+    t.boolean "is_admin", default: false
+    t.text "introduction"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "requests", "users", column: "artist_id"
-  add_foreign_key "requests", "users", column: "requester_id"
+  add_foreign_key "creaters", "users"
+  add_foreign_key "requests", "creaters"
+  add_foreign_key "requests", "users"
 end

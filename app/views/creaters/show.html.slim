@@ -3,15 +3,15 @@
     .media.py-3.px-5.bg-white
       = image_tag 'araki', size: '100', class: 'rounded-circle mr-5'
       .media-body
-        h5.mt-0 新木優子
-        | 日本の女優、ファッションモデルである。愛称は、ゆんぴょ。 東京都出身。スターダストプロモーション所属。
+        h5.mt-0= @creater.user.username
+        p= @creater.description
 section.row.p-3
   .col-4
     .card
       .card-body
         section.mb-3
           - if current_user
-            .mb-1= link_to '新規リクエスト', new_request_path, class: 'btn btn-raised btn-success w-100'
+            .mb-1= link_to '新規リクエスト', new_creater_request_path(@creater), class: 'btn btn-raised btn-success w-100'
           - else
             /TODO:  ボタンにし新規登録を促すモーダルを出す
             .mb-1= link_to '新規リクエスト', nil, class: 'btn btn-raised btn-success w-100 disabled'
@@ -19,7 +19,7 @@ section.row.p-3
         table.table.table-borderless
           tr
             th リクエスト料金
-            td 3,000円
+            td= number_to_currency(@creater.min_charge, unit: "円", format: "%n%u", precision: 0)
           tr
             th リクエスト総数
             td 123

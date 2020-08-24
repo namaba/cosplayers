@@ -11,6 +11,8 @@
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  failed_attempts        :integer          default(0), not null
+#  introduction           :text(65535)
+#  is_admin               :boolean          default(FALSE)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
 #  locked_at              :datetime
@@ -35,15 +37,13 @@
 #
 class User < ApplicationRecord
 
-  has_many :sent_requests, class_name: 'Request', foreign_key: 'requester_id'
-  has_many :recieved_requests, class_name: 'Request', foreign_key: 'artist_id'
+  has_many :requests
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers:[:twitter]
-
+         :confirmable, :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:twitter]
 
 
   def self.from_omniauth(auth)

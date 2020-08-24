@@ -11,6 +11,8 @@
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  failed_attempts        :integer          default(0), not null
+#  introduction           :text(65535)
+#  is_admin               :boolean          default(FALSE)
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
 #  locked_at              :datetime

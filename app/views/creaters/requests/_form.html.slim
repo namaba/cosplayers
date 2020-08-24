@@ -1,4 +1,4 @@
-= form_with model: @request, local: true  do |f|
+= form_with model: [:creater, @request], local: true  do |f|
   .form-group
     = f.label Request.human_attribute_name(:genre), class: 'bmd-label-floating'
     = f.select :genre, Request.genres_i18n.invert, {selected: :photo}, class: 'form-control', required: true
