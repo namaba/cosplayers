@@ -14,45 +14,39 @@
           dt 自己紹介
           dd.text-muted.mt-2= current_user.introduction.truncate(30)
         hr.mt-0
-        dl.px-3.mb-0
-          dt クレジットカード
-          dd.d-flex.justify-content-between.align-items-center
-            p.text-muted.mb-0 nk902426
-            button.btn.btn-primary 編集
-        hr.mt-0
-        dl.px-3.mb-0
-          dt 支払い
-          dd.d-flex.justify-content-between.align-items-center
-            p.text-muted.mb-0 nk902426
-            button.btn.btn-primary 編集
-        hr.mt-0
 
       section.mb-5
         .pt-3.px-3.mb-3.border-bottom.d-flex.justify-content-between.align-items-center
           h5 コスプレイヤー
           - if current_user.creater
-            = link_to '編集', edit_user_path(current_user), class: 'btn btn-primary'
+            = link_to '編集', edit_creater_path(current_user.creater), class: 'btn btn-primary'
           - else
             = link_to 'コスプレイヤーになる', new_creater_path, class: 'btn btn-primary'
         - if current_user.creater
           dl.px-3.mb-0
             dt リクエストの募集
-            dd.d-flex.justify-content-between.align-items-center
-              p.text-muted.mb-0 nk902426
-              button.btn.btn-primary 編集
+            dd.text-muted.mt-2 募集中
           hr.mt-0
           dl.px-3.mb-0
-            dt 銀行口座
-            dd.d-flex.justify-content-between.align-items-center
-              p.text-muted.mb-0 nk902426
-              button.btn.btn-primary 編集
+            dt 最低依頼金額
+            dd.text-muted.mt-2= current_user.creater.min_charge
           hr.mt-0
           dl.px-3.mb-0
-            dt 売り上げ
-            dd.d-flex.justify-content-between.align-items-center
-              p.text-muted.mb-0 nk902426
-              button.btn.btn-primary 編集
+            dt 自己紹介
+            dd.text-muted.mt-2= current_user.creater.description.truncate(30)
           hr.mt-0
+          / dl.px-3.mb-0
+          /   dt 銀行口座
+          /   dd.d-flex.justify-content-between.align-items-center
+          /     p.text-muted.mb-0 nk902426
+          /     button.btn.btn-primary 編集
+          / hr.mt-0
+          / dl.px-3.mb-0
+          /   dt 売り上げ
+          /   dd.d-flex.justify-content-between.align-items-center
+          /     p.text-muted.mb-0 nk902426
+          /     button.btn.btn-primary 編集
+          / hr.mt-0
 
       section.mb-5
         h5.p-3.mb-3.border-bottom その他

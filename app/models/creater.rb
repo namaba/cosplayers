@@ -2,12 +2,13 @@
 #
 # Table name: creaters
 #
-#  id          :bigint           not null, primary key
-#  description :text(65535)
-#  min_charge  :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :bigint           not null
+#  id           :bigint           not null, primary key
+#  description  :text(65535)
+#  is_accepting :boolean          default(TRUE), not null
+#  min_charge   :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :bigint           not null
 #
 # Indexes
 #
