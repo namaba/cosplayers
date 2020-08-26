@@ -1,0 +1,12 @@
+.container
+  .card
+    .card-body
+      h3 ユーザー編集
+      = form_with model: current_user, local: true do |f|
+        .form-group
+          = f.label User.human_attribute_name(:username), class: 'bmd-label-floating'
+          = f.text_field :username, class: 'form-control', required: true
+        .form-group
+          = f.label User.human_attribute_name(:introduction), class: 'bmd-label-floating'
+          = f.text_area :introduction, rows: 10, class: 'form-control', required: true
+        = f.submit '送信', class: 'btn btn-success btn-raised'

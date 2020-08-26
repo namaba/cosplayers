@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      creater:
+        description: 自己紹介
+        min_charge: 最低金額

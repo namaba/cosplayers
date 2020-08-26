@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        username: ユーザーネーム
+        introduction: 自己紹介

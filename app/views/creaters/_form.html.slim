@@ -1,0 +1,8 @@
+= form_with model: current_user.creater, local: true do |f|
+  .form-group
+    = f.label Creater.human_attribute_name(:description), class: 'bmd-label-floating'
+    = f.text_area :description, rows: 10, class: 'form-control', required: true
+  .form-group
+    = f.label Creater.human_attribute_name(:min_charge), class: 'bmd-label-floating'
+    = f.text_field :min_charge, class: 'form-control', required: true
+  = f.submit '送信', class: 'btn btn-success btn-raised'
