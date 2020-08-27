@@ -36,9 +36,22 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 class User < ApplicationRecord
+  has_one_attached :avatar
 
   has_many :requests
   has_one :creater
+
+  validate :validate_avatar
+
+  def validate_avatar
+    errors.add(:avatar, "画像データではありません。") unless image?
+  end
+
+  def image?
+    return '' unless avatar.attached?
+
+    %w[image/jpg image/jpeg image/png image/gif].include?(avatar.blob.content_type)
+  end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -9,4 +9,6 @@
         .form-group
           = f.label User.human_attribute_name(:introduction), class: 'bmd-label-floating'
           = f.text_area :introduction, rows: 10, class: 'form-control', required: true
+        .field
+          = f.file_field :avatar
         = f.submit '送信', class: 'btn btn-success btn-raised'
