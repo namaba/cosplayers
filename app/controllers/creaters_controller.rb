@@ -1,5 +1,5 @@
 class CreatersController < ApplicationController
-  before_action :set_creater, ony: %i[edit update]
+  before_action :set_creater, only: %i[edit update]
   def index
   end
 
