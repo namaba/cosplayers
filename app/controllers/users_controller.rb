@@ -16,12 +16,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def download
+    data = current_user.avatar.download
+    send_data(data, type: 'image/png', filename: 'download.jpg')
+  end
+
   private
 
   def user_params
     params.required(:user).permit(
       :username,
-      :introduction
+      :introduction,
+      :avatar
     )
   end
 end

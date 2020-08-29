@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   end
   resources :requesters, only: %i[index show]
   resources :photos
-  resources :users
+  resources :users do
+    get :download
+  end
 end
