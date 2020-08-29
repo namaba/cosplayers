@@ -13,3 +13,11 @@ ja:
       genre:
         photo: 写真
         movie: 動画
+      status:
+        requesting: 承認待ち
+        making: 作業中
+        completed: 完成
+        canceled: キャンセル
+        declined: 辞退
+        expired: 期限切れ
+        canceled_by_manage: キャンセル（by運営）

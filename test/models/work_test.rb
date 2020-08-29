@@ -6,7 +6,6 @@
 #  genre        :string(255)      default("photo"), not null
 #  is_premium   :boolean          default(FALSE), not null
 #  is_published :boolean          default(FALSE), not null
-#  url          :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  creater_id   :bigint           not null

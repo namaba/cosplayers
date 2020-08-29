@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_140606) do
+ActiveRecord::Schema.define(version: 2020_08_27_140607) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(version: 2020_08_27_140606) do
   create_table "works", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "creater_id", null: false
     t.string "genre", default: "photo", null: false
-    t.string "url"
     t.boolean "is_published", default: false, null: false
     t.boolean "is_premium", default: false, null: false
     t.datetime "created_at", precision: 6, null: false

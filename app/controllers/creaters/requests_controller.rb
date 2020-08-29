@@ -2,7 +2,16 @@ class Creaters::RequestsController < ApplicationController
   before_action :set_creater
 
   def index
-    @reqeusts = creater.reqeusts.requesting
+    @requests = case params[:status]&.to_sym
+                when :making
+                  @creater.requests.making.page(params[:page]).per(20)
+                when :completed
+                  @creater.requests.completed.page(params[:page]).per(20)
+                when :canceled
+                  @creater.requests.all_canceled.page(params[:page]).per(20)
+                else
+                  @creater.requests.requesting.page(params[:page]).per(20)
+                end
   end
 
   def new
