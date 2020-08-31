@@ -1,5 +1,6 @@
 class Creaters::RequestsController < ApplicationController
   before_action :set_creater
+  before_action :set_request, only: %i[show accept decline]
 
   def index
     @requests = case params[:status]&.to_sym
@@ -32,9 +33,35 @@ class Creaters::RequestsController < ApplicationController
   def thank
   end
 
+  def show
+  end
+
+  def accept
+    option = if @request.making!
+               { notice: '承認しました' }
+             else
+               { alert: '承認に失敗しました' }
+             end
+    redirect_to creater_request_path(@creater, @request), option
+  end
+
+  def decline
+    option = if @request.declined!
+               { notice: '辞退しました' }
+             else
+               { alert: '辞退に失敗しました' }
+             end
+    redirect_to creater_request_path(@creater, @request), option
+  end
+
   private
+
   def set_creater
     @creater = Creater.find params[:creater_id]
+  end
+
+  def set_request
+    @request = Request.find params[:id]
   end
 
   def request_params
@@ -45,6 +72,6 @@ class Creaters::RequestsController < ApplicationController
       :genre,
       :is_anonymous,
       :is_hidden,
-      )
+    )
   end
 end

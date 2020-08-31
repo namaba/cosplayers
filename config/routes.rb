@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :creaters do
     resources :requests, module: :creaters do
       get :thank, on: :collection
+      member do
+        get :accept
+        get :decline
+      end
     end
   end
   resources :requesters, only: %i[index show]
