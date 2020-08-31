@@ -1,23 +1,8 @@
 .container
   .card
     .card-body
-      h3.mb-5 リクエスト詳細
-      = form_with model: [:creater, @request], local: true  do |f|
-        .form-group
-          = f.label '依頼者', class: 'bmd-label-floating'
-          / TODO: 依頼者のプロフィール画面作成したらリンクつける
-          = link_to @request.user.username, root_path, class: 'ml-4'
-        .form-row
-          .col.form-group
-            = f.label Request.human_attribute_name(:genre), class: 'bmd-label-floating'
-            = f.text_field :genre, value: @request.genre_i18n, class: 'form-control-plaintext', required: true, readonly: true
-          .col.form-group
-            = f.label Request.human_attribute_name(:amount), class: 'bmd-label-floating'
-            = f.text_field :amount, class: 'form-control-plaintext', required: true, readonly: true
-        .form-group
-          = f.label Request.human_attribute_name(:description), class: 'bmd-label-floating'
-          = f.text_area :description, rows: 10, class: 'form-control-plaintext', required: true, readonly: true
-
-      .text-center
-        = link_to '辞退する', decline_creater_request_path(@creater, @request), class: 'btn btn-secondary mr-5'
-        = link_to '依頼を承認する', accept_creater_request_path(@creater, @request), class: 'btn btn-raised btn-success'
+      h3= "リクエスト詳細： #{@request.status_i18n}"
+      - if @request.status.in?(%w[requesting canceled declined])
+        = render 'request_info', request: @request
+      - elsif @request.making?
+        = render 'making', request: @request

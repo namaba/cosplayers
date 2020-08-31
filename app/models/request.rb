@@ -44,6 +44,6 @@ class Request < ApplicationRecord
     canceled_by_manage: 'canceled_by_manage'
   }
 
-  scope :all_canceled, -> { where(status: %i[canceled decline canceled_by_manage]) }
+  scope :all_canceled, -> { where(status: %i[canceled declined canceled_by_manage]) }
 
 end
