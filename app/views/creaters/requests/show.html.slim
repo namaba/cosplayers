@@ -1,8 +1,15 @@
 .container
-  .card
+  h3= "リクエスト詳細： #{@request.status_i18n}"
+  .card.mb-3
     .card-body
-      h3= "リクエスト詳細： #{@request.status_i18n}"
-      - if @request.status.in?(%w[requesting canceled declined])
-        = render 'request_info', request: @request
-      - elsif @request.making?
-        = render 'making', request: @request
+      = render 'request_info', request: @request
+      - if @request.requesting?
+        .text-center.mt-4
+          = link_to '辞退する', decline_creater_request_path(@request.creater, @request), class: 'btn btn-secondary mr-3'
+          = link_to '依頼を承認する', accept_creater_request_path(@request.creater, @request), class: 'btn btn-raised btn-success'
+      - if @request.making?
+        .text-center.mt-4
+          = link_to '辞退する', decline_creater_request_path(@request.creater, @request), class: 'btn btn-secondary mr-3'
+          = link_to '作品をアップする', edit_creater_request_path(@request.creater, @request), class: 'btn btn-raised btn-success'
+  - if @request.making?
+

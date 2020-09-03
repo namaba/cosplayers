@@ -1,6 +1,6 @@
 class Creaters::RequestsController < ApplicationController
   before_action :set_creater
-  before_action :set_request, only: %i[show accept decline]
+  before_action :set_request, only: %i[show edit update accept decline]
 
   def index
     @requests = case params[:status]&.to_sym
@@ -16,7 +16,8 @@ class Creaters::RequestsController < ApplicationController
   end
 
   def new
-    @request = current_user.requests.build()
+    @request = current_user.requests.build
+    @reqeust.works.build
   end
 
   def create
@@ -34,6 +35,20 @@ class Creaters::RequestsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    @request.works.build if @request.works.blank?
+  end
+
+  def update
+    @request.attributes = request_params
+
+    if @request.save
+      redirect_to creater_request_path(@request.creater_id, @request), notice: '保存しました'
+    else
+      redirect_to creater_request_path(@request.creater_id, @request), notice: @request.errors.full_messages.join("\n")
+    end
   end
 
   def accept
@@ -72,6 +87,7 @@ class Creaters::RequestsController < ApplicationController
       :genre,
       :is_anonymous,
       :is_hidden,
+      works_attributes: [:id, :genre, :creater_id, :request_id, :is_premium, :is_published]
     )
   end
 end

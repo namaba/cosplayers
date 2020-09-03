@@ -1,4 +1,4 @@
-table.table.mt-5
+table.table
   tr
     th[style="width: 200px;"] 依頼者
     td= request.user.username
@@ -12,7 +12,3 @@ table.table.mt-5
     th= Request.human_attribute_name(:description)
     td= request.description
 
-- if request.requesting?
-  .text-center.mt-4
-    = link_to '辞退する', decline_creater_request_path(request.creater, request), class: 'btn btn-secondary mr-3'
-    = link_to '依頼を承認する', accept_creater_request_path(request.creater, request), class: 'btn btn-raised btn-success'
