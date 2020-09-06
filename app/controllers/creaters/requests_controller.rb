@@ -87,7 +87,7 @@ class Creaters::RequestsController < ApplicationController
       :genre,
       :is_anonymous,
       :is_hidden,
-      works_attributes: [:id, :genre, :creater_id, :request_id, :is_premium, :is_published]
+      works_attributes: [:id, :genre, :creater_id, :request_id, :is_premium, :is_published, :photo]
     )
   end
 end

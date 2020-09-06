@@ -1,3 +1,8 @@
+scss:
+  .photo {
+    width: 100%;
+  }
+
 .container
   h3= "リクエスト詳細： #{@request.status_i18n}"
   .card.mb-3
@@ -12,4 +17,10 @@
           = link_to '辞退する', decline_creater_request_path(@request.creater, @request), class: 'btn btn-secondary mr-3'
           = link_to '作品をアップする', edit_creater_request_path(@request.creater, @request), class: 'btn btn-raised btn-success'
   - if @request.making?
+    .card
+      .card-body
+        .d-flex.flex-wrap.align-items-center
+          - @request.works.each do |work|
+            .col-4.mb-3
+              = image_tag url_for(work.photo), class: 'photo'
 

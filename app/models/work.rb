@@ -22,10 +22,24 @@
 #  fk_rails_...  (request_id => requests.id)
 #
 class Work < ApplicationRecord
+  has_one_attached :photo
+
   belongs_to :creater
   belongs_to :request
 
   validates_presence_of :creater_id
+  validate :validate_photo
+
+  def validate_photo
+    errors.add(:photo, "画像データではありません。jpg/jpeg/png/gifのみアップロード可能です") unless image?
+  end
+
+  def image?
+    return '' unless photo.attached?
+
+    %w[image/jpg image/jpeg image/png image/gif].include?(photo.blob.content_type)
+  end
+
 
   enum genre: {
     photo: 'photo',

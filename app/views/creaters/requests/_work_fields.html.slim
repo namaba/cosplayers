@@ -1,5 +1,6 @@
 .nested-fields
   .field
-    = f.label Work.human_attribute_name(:genre), class: 'bmd-label-floating'
-    = f.select :genre, Work.genres_i18n.invert, { selected: :photo }, { class: 'form-control', required: false }
+    / = f.label Work.human_attribute_name(:genre), class: 'bmd-label-floating'
+    / = f.select :genre, Work.genres_i18n.invert, { selected: :photo }, { class: 'form-control', required: false }
+    = f.file_field :photo
   = link_to_remove_association "remove task", f
