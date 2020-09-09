@@ -1,0 +1,7 @@
+.nested-fields
+  .field
+    / = f.label Work.human_attribute_name(:genre), class: 'bmd-label-floating'
+    / = f.select :genre, Work.genres_i18n.invert, { selected: :photo }, { class: 'form-control', required: false }
+    = image_tag url_for(f.object.photo) if f.object.photo.attached?
+    = f.file_field :photo
+  = link_to_remove_association "削除", f

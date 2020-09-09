@@ -25,5 +25,5 @@
               td= request.description.truncate(20)
               td= request.amount
               td= request.status_i18n
-              td= link_to '詳細', root_path, class: 'btn btn-sm btn-primary'
+              td= link_to '詳細', creater_request_path(@creater, request), class: 'btn btn-sm btn-primary'
       = paginate @requests

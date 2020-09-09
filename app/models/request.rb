@@ -29,6 +29,9 @@ class Request < ApplicationRecord
   belongs_to :user
   belongs_to :creater
 
+  has_many :works, dependent: :nullify
+  accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
+
   enum genre: {
     photo: 'photo',
     movie: 'movie',
@@ -44,6 +47,6 @@ class Request < ApplicationRecord
     canceled_by_manage: 'canceled_by_manage'
   }
 
-  scope :all_canceled, -> { where(status: %i[canceled decline canceled_by_manage]) }
+  scope :all_canceled, -> { where(status: %i[canceled declined canceled_by_manage]) }
 
 end

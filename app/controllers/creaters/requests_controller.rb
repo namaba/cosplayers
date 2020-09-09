@@ -1,5 +1,6 @@
 class Creaters::RequestsController < ApplicationController
   before_action :set_creater
+  before_action :set_request, only: %i[show edit update accept decline complete]
 
   def index
     @requests = case params[:status]&.to_sym
@@ -15,7 +16,8 @@ class Creaters::RequestsController < ApplicationController
   end
 
   def new
-    @request = current_user.requests.build()
+    @request = current_user.requests.build
+    @reqeust.works.build
   end
 
   def create
@@ -32,9 +34,60 @@ class Creaters::RequestsController < ApplicationController
   def thank
   end
 
+  def show
+  end
+
+  def edit
+    @request.works.build if @request.works.blank?
+  end
+
+  def update
+    @request.attributes = request_params
+
+    if @request.save
+      redirect_to creater_request_path(@request.creater_id, @request), notice: '保存しました'
+    else
+      redirect_to creater_request_path(@request.creater_id, @request), notice: @request.errors.full_messages.join("\n")
+    end
+  end
+
+  def accept
+    option = if @request.making!
+               { notice: '承認しました' }
+             else
+               { alert: '承認に失敗しました' }
+             end
+    redirect_to creater_request_path(@creater, @request), option
+  end
+
+  def decline
+    option = if @request.declined!
+               { notice: '辞退しました' }
+             else
+               { alert: '辞退に失敗しました' }
+             end
+    redirect_to creater_request_path(@creater, @request), option
+  end
+
+  def complete
+    redirect_to creater_request_path(@creater, @request), alert: '作品がありません' if @request.works.blank?
+
+    option = if @request.completed!
+               { notice: '完了しました' }
+             else
+               { alert: '完了に失敗しました' }
+             end
+    redirect_to creater_request_path(@creater, @request), option
+  end
+
   private
+
   def set_creater
     @creater = Creater.find params[:creater_id]
+  end
+
+  def set_request
+    @request = Request.find params[:id]
   end
 
   def request_params
@@ -45,6 +98,7 @@ class Creaters::RequestsController < ApplicationController
       :genre,
       :is_anonymous,
       :is_hidden,
-      )
+      works_attributes: [:id, :genre, :creater_id, :request_id, :is_premium, :is_published, :photo, :_destroy]
+    )
   end
 end

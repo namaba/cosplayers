@@ -1,0 +1,14 @@
+table.table
+  tr
+    th[style="width: 200px;"] 依頼者
+    td= request.user.username
+  tr
+    th= Request.human_attribute_name(:genre)
+    td= request.genre_i18n
+  tr
+    th= Request.human_attribute_name(:amount)
+    td= number_to_currency(request.amount, unit: "円〜", format: "%n%u", precision: 0)
+  tr
+    th= Request.human_attribute_name(:description)
+    td= request.description
+
