@@ -21,6 +21,24 @@ class UsersController < ApplicationController
     send_data(data, type: 'image/png', filename: 'download.jpg')
   end
 
+  def creditcard
+    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+    customer = Payjp::Customer.create(
+      email: current_user.email,
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+    )
+  end
+
+  def pay
+    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+    Payjp::Charge.create(
+      amount: 3500, # 決済する値段
+      card: params['payjp-token'],
+      currency: 'jpy'
+    )
+  end
+
   private
 
   def user_params

@@ -1,6 +1,11 @@
+
 .container
   .card
     .card-body
+      = form_with url: creditcard_users_path, local: true do |f|
+        script.payjp-button data-key=ENV["PAYJP_PUBLIC_KEY"] src="https://checkout.pay.jp/"
+      / = form_with url: pay_users_path, local: true do |f|
+      /   script.payjp-button data-key=ENV["PAYJP_PUBLIC_KEY"] src="https://checkout.pay.jp/"
       = link_to 'ダウンロード', user_download_path(current_user)
       - if current_user.avatar.attached?
         = image_tag url_for(current_user.avatar)

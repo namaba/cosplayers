@@ -17,7 +17,7 @@ class Creaters::RequestsController < ApplicationController
 
   def new
     @request = current_user.requests.build
-    @reqeust.works.build
+    @request.works.build
   end
 
   def create

@@ -44,6 +44,8 @@ gem 'devise'
 gem 'omniauth-twitter'
 # env
 gem 'dotenv-rails'
+# 決済
+gem 'payjp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
