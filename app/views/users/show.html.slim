@@ -2,14 +2,10 @@
 .container
   .card
     .card-body
-      = form_with url: creditcard_users_path, local: true do |f|
-        script.payjp-button data-key=ENV["PAYJP_PUBLIC_KEY"] src="https://checkout.pay.jp/"
-      / = form_with url: pay_users_path, local: true do |f|
-      /   script.payjp-button data-key=ENV["PAYJP_PUBLIC_KEY"] src="https://checkout.pay.jp/"
-      = link_to 'ダウンロード', user_download_path(current_user)
-      - if current_user.avatar.attached?
-        = image_tag url_for(current_user.avatar)
-        = image_tag current_user.avatar.variant(resize_to_limit: [100, 100])
+      / = link_to 'ダウンロード', user_download_path(current_user)
+      / - if current_user.avatar.attached?
+      /   = image_tag url_for(current_user.avatar)
+      /   = image_tag current_user.avatar.variant(resize_to_limit: [100, 100])
       h3 アカウント
       section.mb-5
         .pt-3.px-3.mb-3.border-bottom.d-flex.justify-content-between.align-items-center
@@ -23,6 +19,16 @@
           dt 自己紹介
           dd.text-muted.mt-2= current_user.introduction&.truncate(30)
         hr.mt-0
+        dl.px-3.mb-0
+          dt クレジットカード
+          dd.d-flex.justify-content-between.align-items-center
+            .text-muted= current_user.credit_card ? '登録済み' : '未登録'
+            - if current_user.credit_card
+              = link_to '詳細', credit_card_path(current_user.credit_card), class: 'btn btn-primary'
+            - else
+              = form_with url: credit_cards_path, local: true do |f|
+                script.payjp-button data-key=ENV["PAYJP_PUBLIC_KEY"]  data-text="カード情報を入力する" data-submit-text="登録" src="https://checkout.pay.jp/"
+          hr.mt-0
 
       section.mb-5
         .pt-3.px-3.mb-3.border-bottom.d-flex.justify-content-between.align-items-center
