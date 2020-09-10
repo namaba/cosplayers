@@ -4,6 +4,5 @@ class AddColumnsToUsers < ActiveRecord::Migration[6.0]
     add_column :users, :uid, :string
     add_column :users, :username, :string
     add_column :users, :is_admin, :boolean, default: false
-    add_column :users, :introduction, :text
   end
 end
