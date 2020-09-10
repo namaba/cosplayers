@@ -16,7 +16,7 @@
         hr.mt-0
         dl.px-3.mb-0
           dt 自己紹介
-          dd.text-muted.mt-2= current_user.introduction.truncate(30)
+          dd.text-muted.mt-2= current_user.introduction&.truncate(30)
         hr.mt-0
 
       section.mb-5
