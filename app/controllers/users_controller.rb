@@ -30,15 +30,6 @@ class UsersController < ApplicationController
     )
   end
 
-  def pay
-    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-    Payjp::Charge.create(
-      amount: 3500, # 決済する値段
-      card: params['payjp-token'],
-      currency: 'jpy'
-    )
-  end
-
   private
 
   def user_params

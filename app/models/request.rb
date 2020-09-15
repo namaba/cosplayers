@@ -49,4 +49,16 @@ class Request < ApplicationRecord
 
   scope :all_canceled, -> { where(status: %i[canceled declined canceled_by_manage]) }
 
+  def pay
+    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+    Payjp::Charge.create(
+      amount: amount, # 決済する値段
+      customer: user.credit_card.customer_id,
+      currency: 'jpy',
+      description: "request_id: #{id}",
+      capture: false,
+      expiry_days: 7,
+      metadata: {"仮払い": "1回目"}
+    )
+  end
 end

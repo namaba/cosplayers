@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :photos
   resources :users do
     get :download
-    post :pay, on: :collection
   end
   resources :credit_cards
 end
