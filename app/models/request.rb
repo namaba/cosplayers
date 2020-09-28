@@ -51,7 +51,7 @@ class Request < ApplicationRecord
 
   def pay
     Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-    Payjp::Charge.create(
+    charge = Payjp::Charge.create(
       amount: amount, # 決済する値段
       customer: user.credit_card.customer_id,
       currency: 'jpy',
