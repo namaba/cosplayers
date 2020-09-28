@@ -28,6 +28,7 @@ class Request < ApplicationRecord
 
   belongs_to :user
   belongs_to :creater
+  has_one :bill
 
   has_many :works, dependent: :nullify
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
