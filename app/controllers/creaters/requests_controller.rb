@@ -26,7 +26,7 @@ class Creaters::RequestsController < ApplicationController
     @request = current_user.requests.build(request_params.merge(creater: @creater, status: :requesting))
 
     if @request.save
-      @request.pay
+      @request.create_charge
       redirect_to thank_creater_requests_path, notice: '依頼しました'
     else
       flash.now[:alert] = @request.errors.full_messages.join("\n")
@@ -76,6 +76,7 @@ class Creaters::RequestsController < ApplicationController
     redirect_to creater_request_path(@creater, @request), alert: '作品がありません' if @request.works.blank?
 
     option = if @request.completed!
+               @request.capture_charge
                { notice: '完了しました' }
              else
                { alert: '完了に失敗しました' }
