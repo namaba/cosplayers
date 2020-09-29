@@ -61,7 +61,7 @@ class Request < ApplicationRecord
       expiry_days: 7,
       metadata: {"仮払い": "1回目"}
     )
-    request.create_bill(charge_id: charge.id)
+    self.create_bill(charge_id: charge.id)
   end
 
   def capture_charge

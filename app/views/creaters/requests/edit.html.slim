@@ -1,7 +1,7 @@
 .container
   .card
     .card-body
-      = form_with model: [:creater, @request], local: true do |f|
+      = form_with model: [@creater, @request], local: true do |f|
         #works.field
           = f.fields_for :works do |w|
             = render 'work_fields', f: w

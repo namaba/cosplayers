@@ -21,4 +21,5 @@
 class Creater < ApplicationRecord
   belongs_to :user
   has_many :requests
+  has_many :bills, through: :requests
 end
