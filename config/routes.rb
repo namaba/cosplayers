@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   resources :users do
     get :download
   end
+  namespace :user do
+    resources :requests
+  end
   resources :credit_cards
 end
