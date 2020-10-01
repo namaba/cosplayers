@@ -28,6 +28,7 @@ class Request < ApplicationRecord
 
   belongs_to :user
   belongs_to :creater
+  has_one :bill
 
   has_many :works, dependent: :nullify
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
@@ -49,4 +50,24 @@ class Request < ApplicationRecord
 
   scope :all_canceled, -> { where(status: %i[canceled declined canceled_by_manage]) }
 
+  def create_charge
+    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+    charge = Payjp::Charge.create(
+      amount: amount, # 決済する値段
+      customer: user.credit_card.customer_id,
+      currency: 'jpy',
+      description: "request_id: #{id}",
+      capture: false,
+      expiry_days: 7,
+      metadata: {"仮払い": "1回目"}
+    )
+    self.create_bill(charge_id: charge.id)
+  end
+
+  def capture_charge
+    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+    charge = Payjp::Charge.retrieve(bill.charge_id)
+    charge.capture
+    bill.update(is_captured: true)
+  end
 end

@@ -10,9 +10,14 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :bills
   resources :requesters, only: %i[index show]
   resources :photos
   resources :users do
     get :download
   end
+  namespace :user do
+    resources :requests
+  end
+  resources :credit_cards
 end

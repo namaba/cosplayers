@@ -1,0 +1,21 @@
+scss:
+  .photo {
+    width: 100%;
+  }
+
+.container
+  .card.mb-3
+    .card-body
+      h3.mb-4= "リクエスト詳細： #{@request.status_i18n}"
+      = render 'request_info', request: @request
+      - if @request.requesting?
+        .text-center.mt-4
+          = link_to '辞退する', user_request_path(@request), class: 'btn btn-secondary mr-3'
+
+  - if @request.completed? && @request.works.present?
+    .card
+      .card-body
+        .d-flex.flex-wrap.align-items-center
+          - @request.works.each do |work|
+            .col-4.mb-3
+              = image_tag url_for(work.photo), class: 'photo'

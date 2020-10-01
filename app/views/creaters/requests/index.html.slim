@@ -3,7 +3,7 @@
 .container
   .card
     .card-body
-      h3 リクエスト一覧
+      h3 受注管理
       ul.nav.nav-tabs.mb-3
         li.nav-item= link_to '承認待ち', creater_requests_path(current_user.creater), class: "nav-link #{'active' if status.nil?}"
         li.nav-item= link_to '作業中', creater_requests_path(current_user.creater, status: :making), class: "nav-link #{'active' if status == :making}"

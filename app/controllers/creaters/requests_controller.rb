@@ -17,14 +17,17 @@ class Creaters::RequestsController < ApplicationController
 
   def new
     @request = current_user.requests.build
-    @reqeust.works.build
+    @request.works.build
   end
 
   def create
+    redirect_to new_creater_request_path, alert: 'クレジットカードを登録してください' and return unless current_user.credit_card&.customer_id
+
     @request = current_user.requests.build(request_params.merge(creater: @creater, status: :requesting))
 
     if @request.save
-      redirect_to thank_creater_requests_path, notice: '保存しました'
+      @request.create_charge
+      redirect_to thank_creater_requests_path, notice: '依頼しました'
     else
       flash.now[:alert] = @request.errors.full_messages.join("\n")
       render :new
@@ -73,6 +76,7 @@ class Creaters::RequestsController < ApplicationController
     redirect_to creater_request_path(@creater, @request), alert: '作品がありません' if @request.works.blank?
 
     option = if @request.completed!
+               @request.capture_charge
                { notice: '完了しました' }
              else
                { alert: '完了に失敗しました' }

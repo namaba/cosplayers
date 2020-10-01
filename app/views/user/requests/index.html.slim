@@ -1,0 +1,29 @@
+- status = params[:status]&.to_sym
+
+.container
+  .card
+    .card-body
+      h3 購入した作品
+      ul.nav.nav-tabs.mb-3
+        li.nav-item= link_to '承認待ち', user_requests_path, class: "nav-link #{'active' if status.nil?}"
+        li.nav-item= link_to '作業中', user_requests_path(status: :making), class: "nav-link #{'active' if status == :making}"
+        li.nav-item= link_to '完成', user_requests_path(status: :completed), class: "nav-link #{'active' if status == :completed}"
+        li.nav-item= link_to 'キャンセル（辞退含む）', user_requests_path(status: :canceled), class:  "nav-link #{'active' if status == :canceled}"
+      table.table.table-hover
+        thead.thead-dark
+          th 依頼者
+          th ジャンル
+          th 依頼詳細
+          th 料金
+          th ステータス
+          th 詳細
+        tbody
+          - @requests.each do |request|
+            tr[style="line-height: 2.5;"]
+              td= request.user.username
+              td= request.genre
+              td= request.description.truncate(20)
+              td= request.amount
+              td= request.status_i18n
+              td= link_to '詳細', user_request_path(request), class: 'btn btn-sm btn-primary'
+      = paginate @requests

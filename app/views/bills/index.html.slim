@@ -1,0 +1,32 @@
+- status = params[:status]&.to_sym
+
+.container
+  .card
+    .card-body
+      h3 売り上げ一覧
+      ul.nav.nav-tabs.mb-3
+        li.nav-item= link_to 'all', bills_path, class: "nav-link #{'active' if status.nil?}"
+        li.nav-item= link_to '未申請', bills_path(status: :unapplied), class: "nav-link #{'active' if status == :unapplied}"
+        li.nav-item= link_to '申請中', bills_path(status: :appliying), class: "nav-link #{'active' if status == :appliying}"
+        li.nav-item= link_to '出金済み', bills_path(status: :withdrawn), class: "nav-link #{'active' if status == :withdrawn}"
+      table.table.table-hover
+        thead.thead-dark
+          th リクエストID
+          th 依頼完了日
+          th 出金状況
+          th 出金申請日時
+          th 出金日時
+          th
+        tbody
+          - @bills.each do |bill|
+            tr[style="line-height: 2.5;"]
+              td= link_to bill.request_id, creater_request_path(bill.request.creater, bill.request)
+              td= l(bill.request.created_at)
+              td= bill.withdrawal_status_i18n
+              td= bill.applied_at ? l(bill.applied_at, format: :short) : nil
+              td= bill.withdrawn_at ? l(bill.withdrawn_at, format: :short) : nil
+              td
+                - if bill.unapplied?
+                  = link_to '出金申請', bill_path(bill), method: :put, data: { confirm: "本当に出金申請しますか？" }, class: 'btn btn-sm btn-primary'
+
+      = paginate @bills

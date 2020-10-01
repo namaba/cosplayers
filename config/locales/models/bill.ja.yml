@@ -1,0 +1,7 @@
+ja:
+  enums:
+    bill:
+      withdrawal_status:
+        unapplied: 未申請
+        appliying: 申請中
+        withdrawn: 出金済み

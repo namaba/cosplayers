@@ -40,6 +40,7 @@ class User < ApplicationRecord
 
   has_many :requests
   has_one :creater
+  has_one :credit_card
 
   validate :validate_avatar
 
