@@ -1,4 +1,5 @@
 class CreditCardsController < ApplicationController
+  before_action :set_payjp_api_key, only: %i[create show destroy]
 
   # TODO: 顧客情報が保存されなかった場合のエラー処理追加する
   def create
@@ -27,9 +28,16 @@ class CreditCardsController < ApplicationController
 
   def destroy
     redirect_to current_user and return unless current_user.credit_card
+
     customer = Payjp::Customer.retrieve(current_user.credit_card.customer_id)
     customer.delete
     current_user.credit_card.delete
     redirect_to current_user
+  end
+
+  private
+
+  def set_payjp_api_key
+    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
   end
 end
