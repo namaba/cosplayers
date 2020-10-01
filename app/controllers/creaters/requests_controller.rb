@@ -1,6 +1,6 @@
 class Creaters::RequestsController < ApplicationController
   before_action :set_creater
-  before_action :set_request, only: %i[show edit update accept decline complete]
+  before_action :set_request, only: %i[show edit update accept decline complete thank]
 
   def index
     @requests = case params[:status]&.to_sym
@@ -27,7 +27,7 @@ class Creaters::RequestsController < ApplicationController
 
     if @request.save
       @request.create_charge
-      redirect_to thank_creater_requests_path, notice: '依頼しました'
+      redirect_to thank_creater_request_path(@creater, @request), notice: '依頼しました'
     else
       flash.now[:alert] = @request.errors.full_messages.join("\n")
       render :new

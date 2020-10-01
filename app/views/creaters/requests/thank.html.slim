@@ -1,1 +1,9 @@
-h1 依頼ありがとうございます！
+.container
+  .card.mb-3.col-8.mx-auto
+    .card-body
+      p リクエストありがとうございます！
+      p 完成を楽しみにお待ちください
+
+  .card.mb-3.col-8.mx-auto
+    .card-body
+      = render 'request_info', request: @request

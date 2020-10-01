@@ -3,6 +3,9 @@ table.table
     th[style="width: 200px;"] 依頼者
     td= request.user.username
   tr
+    th コスプレイヤー
+    td= request.creater.user.username
+  tr
     th= Request.human_attribute_name(:genre)
     td= request.genre_i18n
   tr
