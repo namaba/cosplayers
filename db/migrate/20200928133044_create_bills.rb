@@ -5,6 +5,9 @@ class CreateBills < ActiveRecord::Migration[6.0]
       t.string :charge_id, null: false
       t.boolean :is_captured, null: false, default: false
       t.string :withdrawal_status, null:false, default: 'unapplied'
+      t.datetime :applied_at
+      t.datetime :withdrawn_at
+
 
       t.timestamps
     end

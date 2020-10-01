@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_09_28_133044) do
     t.string "charge_id", null: false
     t.boolean "is_captured", default: false, null: false
     t.string "withdrawal_status", default: "unapplied", null: false
+    t.datetime "applied_at"
+    t.datetime "withdrawn_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["request_id"], name: "index_bills_on_request_id"

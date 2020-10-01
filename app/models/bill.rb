@@ -3,8 +3,10 @@
 # Table name: bills
 #
 #  id                :bigint           not null, primary key
+#  applied_at        :datetime
 #  is_captured       :boolean          default(FALSE), not null
 #  withdrawal_status :string(255)      default("unapplied"), not null
+#  withdrawn_at      :datetime
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  charge_id         :string(255)      not null
