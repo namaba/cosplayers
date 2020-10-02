@@ -65,7 +65,7 @@ class Request < ApplicationRecord
       description: "request_id: #{id}",
       capture: false,
       expiry_days: 7,
-      metadata: {"仮払い": "1回目"}
+      metadata: { "仮払い": "1回目" }
     )
     self.create_bill(charge_id: charge.id)
   end
@@ -75,5 +75,36 @@ class Request < ApplicationRecord
     charge = Payjp::Charge.retrieve(bill.charge_id)
     charge.capture
     bill.update(is_captured: true)
+  end
+
+  def accept
+    raise 'ステータスが無効です' unless requesting?
+    self.attributes = { status: making, accepted_at: Time.current }
+    save!
+    true
+  rescue => e
+    logger.warn e
+    false
+  end
+
+  def complete
+    self.attributes = { status: completed, completed_at: Time.current }
+    ActiveRecord::Base.transaction do
+      save!
+      capture_charge
+    end
+    true
+  rescue => e
+    logger.warn e
+    false
+  end
+
+  def decline
+    self.attributes = { status: declined, declined_at: Time.current }
+    save!
+    true
+  rescue => e
+    logger.warn e
+    false
   end
 end
