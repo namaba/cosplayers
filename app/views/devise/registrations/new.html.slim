@@ -13,7 +13,9 @@ scss:
       h5.text-center 新規登録
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
-
+        .form-group
+          = f.label User.human_attribute_name(:username), class: 'bmd-label-floating'
+          = f.text_field :username, class: 'form-control', required: true
         .form-group
           = f.label :メールアドレス, class: 'bmd-label-floating'
           = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
