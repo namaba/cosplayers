@@ -25,8 +25,7 @@ class Creaters::RequestsController < ApplicationController
 
     @request = current_user.requests.build(request_params.merge(creater: @creater, status: :requesting, requested_at: Time.current))
 
-    if @request.save
-      @request.create_charge
+    if @request.create_with_bill
       redirect_to thank_creater_request_path(@creater, @request), notice: '依頼しました'
     else
       flash.now[:alert] = @request.errors.full_messages.join("\n")

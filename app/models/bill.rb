@@ -23,11 +23,15 @@
 class Bill < ApplicationRecord
   belongs_to :request
 
-  scope :captured, -> {where(is_captured: true)}
+  scope :captured, -> { where(is_captured: true) }
 
   enum withdrawal_status: {
     unapplied: 'unapplied',
     appliying: 'appliying',
     withdrawn: 'withdrawn'
   }
+
+  validates_presence_of :request_id, :charge_id, :withdrawal_status
+  validates_presence_of :applied_at, if: :appliying?
+  validates_presence_of :withdrawn_at, if: :withdrawn?
 end
