@@ -23,10 +23,9 @@ class Creaters::RequestsController < ApplicationController
   def create
     redirect_to new_creater_request_path, alert: 'クレジットカードを登録してください' and return unless current_user.credit_card&.customer_id
 
-    @request = current_user.requests.build(request_params.merge(creater: @creater, status: :requesting))
+    @request = current_user.requests.build(request_params.merge(creater: @creater, status: :requesting, requested_at: Time.current))
 
-    if @request.save
-      @request.create_charge
+    if @request.create_with_bill
       redirect_to thank_creater_request_path(@creater, @request), notice: '依頼しました'
     else
       flash.now[:alert] = @request.errors.full_messages.join("\n")
@@ -55,7 +54,7 @@ class Creaters::RequestsController < ApplicationController
   end
 
   def accept
-    option = if @request.making!
+    option = if @request.accept
                { notice: '承認しました' }
              else
                { alert: '承認に失敗しました' }
@@ -64,7 +63,7 @@ class Creaters::RequestsController < ApplicationController
   end
 
   def decline
-    option = if @request.declined!
+    option = if @request.decline
                { notice: '辞退しました' }
              else
                { alert: '辞退に失敗しました' }
@@ -75,8 +74,7 @@ class Creaters::RequestsController < ApplicationController
   def complete
     redirect_to creater_request_path(@creater, @request), alert: '作品がありません' if @request.works.blank?
 
-    option = if @request.completed!
-               @request.capture_charge
+    option = if @request.complete
                { notice: '完了しました' }
              else
                { alert: '完了に失敗しました' }

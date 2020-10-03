@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_133044) do
+ActiveRecord::Schema.define(version: 2020_10_01_150805) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +73,12 @@ ActiveRecord::Schema.define(version: 2020_09_28_133044) do
     t.boolean "is_anonymous", default: false, null: false
     t.boolean "is_hidden", default: false, null: false
     t.string "status", default: "offering", null: false
+    t.datetime "requested_at"
+    t.datetime "accepted_at"
+    t.datetime "completed_at"
+    t.datetime "canceled_at"
+    t.datetime "declined_at"
+    t.datetime "expired_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["creater_id"], name: "index_requests_on_creater_id"
