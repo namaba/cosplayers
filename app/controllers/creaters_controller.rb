@@ -1,6 +1,8 @@
 class CreatersController < ApplicationController
   before_action :set_creater, only: %i[edit update]
+
   def index
+    @creaters = Creater.page(params[:page]).per(20)
   end
 
   def new

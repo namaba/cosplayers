@@ -5,8 +5,7 @@
     .card-body
       h3 購入した作品
       ul.nav.nav-tabs.mb-3
-        li.nav-item= link_to '承認待ち', user_requests_path, class: "nav-link #{'active' if status.nil?}"
-        li.nav-item= link_to '作業中', user_requests_path(status: :making), class: "nav-link #{'active' if status == :making}"
+        li.nav-item= link_to '依頼中', user_requests_path, class: "nav-link #{'active' if status.nil?}"
         li.nav-item= link_to '完成', user_requests_path(status: :completed), class: "nav-link #{'active' if status == :completed}"
         li.nav-item= link_to 'キャンセル（辞退含む）', user_requests_path(status: :canceled), class:  "nav-link #{'active' if status == :canceled}"
       table.table.table-hover

@@ -18,9 +18,10 @@ nav.navbar.navbar-expand-lg.navbar-white.bg-white
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item= link_to 'HOME', root_path, class: "nav-link #{controller.is_a?(WelcomeController) ? 'active' : nil}"
-      li.nav-item= link_to 'model', creaters_path, class: "nav-link"
-      li.nav-item= link_to 'Photo', photos_path, class: "nav-link"
-      li.nav-item= link_to 'requesters', requesters_path, class: "nav-link"
+      li.nav-item= link_to 'コスプレイヤー', creaters_path, class: "nav-link"
+      li.nav-item= link_to '作品集', photos_path, class: "nav-link"
+      / li.nav-item= link_to 'requesters', requesters_path, class: "nav-link"
+
     - if user_signed_in?
       .dropdown.pull-xs-right.mr-5
         button#lr1.btn.bmd-btn-icon.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"

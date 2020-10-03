@@ -55,6 +55,7 @@ class Request < ApplicationRecord
   }
 
   scope :all_canceled, -> { where(status: %i[canceled declined canceled_by_manage]) }
+  scope :in_progress, -> {where(status: %i[requesting making])}
 
   validates_presence_of :user_id, :creater_id, :amount, :description, :genre, :status
   validates_presence_of :requested_at, if: :requesting?

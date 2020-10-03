@@ -1,8 +1,8 @@
 .container.p-3
-  h1 Photos
+  h1.text-center.mb-4 Photo
   .d-flex.flex-wrap
-    - 48.times do |i|
-      .col-2
-        = link_to photo_path(1) do
+    - @photos.each do |photo|
+      .col-3
+        = link_to photo_path(photo) do
           = image_tag 'araki_2.jpeg', width: '100%'
           p 新木優子
