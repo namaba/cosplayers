@@ -15,10 +15,10 @@ scss:
         = render "devise/shared/error_messages", resource: resource
         .form-group
           = f.label User.human_attribute_name(:username), class: 'bmd-label-floating'
-          = f.text_field :username, class: 'form-control', required: true
+          = f.text_field :username,autofocus: true, class: 'form-control', required: true
         .form-group
           = f.label :メールアドレス, class: 'bmd-label-floating'
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+          = f.email_field :email,  autocomplete: "email", class: "form-control"
         .form-group
           = f.label :password, class: 'bmd-label-floating'
           = f.password_field :password, autocomplete: "new-password", class: "form-control"
