@@ -2,7 +2,12 @@
   h1.text-center.mb-4 Photo
   .d-flex.flex-wrap
     - @photos.each do |photo|
-      .col-3
-        = link_to photo_path(photo) do
-          = image_tag 'araki_2.jpeg', width: '100%'
-          p 新木優子
+      .col-3.mb-3
+        .card
+          = link_to photo_path(photo) do
+            - if photo.photo.attached?
+              = image_tag url_for(photo.photo), class: 'card-img-top'
+            - else
+              = image_tag 'niki', class: 'card-img-top'
+            .card-body
+              .card-text= photo.user.username

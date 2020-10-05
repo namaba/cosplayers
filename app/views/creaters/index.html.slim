@@ -2,7 +2,12 @@
   h1.text-center.mb-4 Cosplayers
   .d-flex.flex-wrap
     - @creaters.each do |creater|
-      .col-3
-        = link_to creater_path(creater.id)
-          = image_tag 'niki', width: '100%'
-          p= creater.user.username
+      .col-3.mb-3
+        .card
+          = link_to creater_path(creater.id)
+            - if creater.user.avatar.attached?
+              = image_tag url_for(creater.user.avatar), class: 'card-img-top'
+            - else
+              = image_tag 'niki', class: 'card-img-top'
+            .card-body
+              .card-text= creater.user.username
