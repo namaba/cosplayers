@@ -1,5 +1,5 @@
 .container
-  .card.mb-4
+  .card.mb-5
     .card-body
       ul.list-unstyled.mb-0
         li 2020/5/21 新機能追加のお知らせ
@@ -7,33 +7,26 @@
         li 2020/5/1  モデルマッチングサイトリリース
   section.mb-4
     .d-flex.justify-content-between.align-items-center.mb-2
-      p.mb-0 New Photos
+      h5 最新の作品
       span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
-      - 12.times do |i|
+      - @photos.each do |photo|
         .col-2
-          = link_to photo_path(1) do
+          = link_to photo_path(photo) do
             = image_tag 'niki', width: '100%'
-            p niki
+            p= photo.user.username
 
-  section.mb-4
+  section.my-4
     .d-flex.justify-content-between.align-items-center.mb-2
-      p.mb-0 Artists
+      h5 コスプレイヤー
       span.small= link_to 'もっとみる', root_path
     .d-flex.flex-wrap
       - @creaters.each do |creater|
         .col-2
           = link_to creater_path(creater.id)
-            = image_tag 'niki', width: '100%'
-            p= creater.user.username
+            - if creater.user.avatar.attached?
+              = image_tag url_for(creater.user.avatar), width: '100%'
+            - else
+              = image_tag 'niki', width: '100%'
+          p= creater.user.username
 
-  section.mb-4
-    .d-flex.justify-content-between.align-items-center.mb-2
-      p.mb-0 Requesters
-      span.small= link_to 'もっとみる', root_path
-    .d-flex.flex-wrap
-      - 12.times do |i|
-        .col-2
-          = link_to requester_path(1)
-            = image_tag 'niki', width: '100%'
-            p niki

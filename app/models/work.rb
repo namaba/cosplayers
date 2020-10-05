@@ -25,6 +25,7 @@ class Work < ApplicationRecord
   has_one_attached :photo
 
   belongs_to :creater
+  has_one :user, class_name: 'User', through: :creater
   belongs_to :request
 
   validates_presence_of :creater_id
