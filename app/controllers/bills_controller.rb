@@ -31,6 +31,6 @@ class BillsController < ApplicationController
   end
 
   def base_query
-    current_user.creater.bills.captured.page(params[:page]).per(20)
+    current_user.creater.bills.captured.page(params[:page]).per(5)
   end
 end
