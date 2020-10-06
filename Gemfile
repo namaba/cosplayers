@@ -29,7 +29,7 @@ gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'slim-rails'
-gem 'kaminari'
+gem 'kaminari', ">= 1.2.1"
 # モデルにViewHelperみたいなのを生やす
 gem 'active_decorator'
 gem 'enum_help'
@@ -42,8 +42,6 @@ gem 'cocoon'
 # devise関連
 gem 'devise'
 gem 'omniauth-twitter'
-# env
-gem 'dotenv-rails'
 # 決済
 gem 'payjp'
 
