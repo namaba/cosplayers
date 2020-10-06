@@ -1,0 +1,11 @@
+#registrationModal.modal.fade aria-hidden="true" aria-labelledby="registrationModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+      .modal-body.text-center.font-weight-bold
+        p 会員になるとリクエストできます
+        p 早速登録してみましょう！
+        = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary mr-2'
+        = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'

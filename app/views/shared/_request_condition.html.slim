@@ -1,0 +1,20 @@
+.card
+  .card-body
+    section.mb-3
+      - if current_user
+        .mb-1= link_to '新規リクエスト', new_creater_request_path(@creater), class: 'btn btn-raised btn-success w-100'
+      - else
+        button.btn.btn-success.btn-raised.w-100 data-target="#registrationModal" data-toggle="modal" type="button"
+          | 新規リクエスト
+        == render 'shared/registration_modal'
+    table.table.table-borderless
+      tr
+        th リクエスト料金
+        / td= number_to_currency(@creater.min_charge, unit: "円〜", format: "%n%u", precision: 0)
+        td 3000円
+      tr
+        th リクエスト総数
+        td 123
+      tr
+        th 対応率
+        td 100%

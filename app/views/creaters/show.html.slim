@@ -7,25 +7,7 @@
         p= @creater.description
 section.row.p-3
   .col-4
-    .card
-      .card-body
-        section.mb-3
-          - if current_user
-            .mb-1= link_to '新規リクエスト', new_creater_request_path(@creater), class: 'btn btn-raised btn-success w-100'
-          - else
-            /TODO:  ボタンにし新規登録を促すモーダルを出す
-            .mb-1= link_to '新規リクエスト', nil, class: 'btn btn-raised btn-success w-100 disabled'
-          = link_to 'フォロー', nil, class: 'btn btn-outline-info w-100'
-        table.table.table-borderless
-          tr
-            th リクエスト料金
-            td= number_to_currency(@creater.min_charge, unit: "円〜", format: "%n%u", precision: 0)
-          tr
-            th リクエスト総数
-            td 123
-          tr
-            th 対応率
-            td 100%
+    == render 'shared/request_condition'
 
   .col-8
     .card

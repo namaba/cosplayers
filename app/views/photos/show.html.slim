@@ -12,21 +12,7 @@ section.row.p-3
           | サンプルサンプルサンプルサンプルサンプルサンプル
           | サンプルサンプルサンプルサンプルサンプルサンプル
 
-    .card
-      .card-body
-        section.mb-3
-          .mb-1= link_to '新規リクエスト', new_creater_request_path(1), class: 'btn btn-raised btn-success w-100'
-          = link_to 'フォロー', nil, class: 'btn btn-outline-info w-100'
-        table.table.table-borderless
-          tr
-            th リクエスト料金
-            td 3,000円
-          tr
-            th リクエスト総数
-            td 123
-          tr
-            th 対応率
-            td 100%
+    == render 'shared/request_condition'
 
 
 
