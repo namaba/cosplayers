@@ -1,9 +1,31 @@
 - status = params[:status]&.to_sym
 
 .container
+  .d-flex.justify-content-between.mb-2
+
+    .card.col-4.text-center
+      h6.card-header 売上総額
+      .card-body
+        h5.card-title= number_to_currency(@gross_sales, unit: "円", format: "%n%u", precision: 0)
+        .card-text= "受取金額：#{number_to_currency(@gross_sales, unit: "円", format: "%n%u", precision: 0)} "
+
+    .card.col-4.text-center
+      .card-header 今月売上
+      .card-body
+        h5.card-title= number_to_currency(@current_month_sales, unit: "円", format: "%n%u", precision: 0)
+        .card-text= "受取金額：#{number_to_currency(@withdrawn_current_month_sales, unit: "円", format: "%n%u", precision: 0)} "
+
+    .card.col-4.text-center
+      .card-header 確定金額
+      .card-body
+        h5.card-title= number_to_currency(@withdrawable_sales, unit: "円", format: "%n%u", precision: 0)
+        - if @withdrawable_sales > 1000
+          = link_to '出金申請', root_path, method: :put, data: { confirm: "本当に出金申請しますか？" }, class: 'btn btn-raised btn-success'
+        - else
+          = link_to '出金申請', nil, class: 'btn btn-raised btn-success disabled'
+
   .card
     .card-body
-      h3 売り上げ一覧
       ul.nav.nav-tabs.mb-3
         li.nav-item= link_to 'all', bills_path, class: "nav-link #{'active' if status.nil?}"
         li.nav-item= link_to '未申請', bills_path(status: :unapplied), class: "nav-link #{'active' if status == :unapplied}"
@@ -16,7 +38,6 @@
           th 出金状況
           th 出金申請日時
           th 出金日時
-          th
         tbody
           - @bills.each do |bill|
             tr[style="line-height: 2.5;"]
@@ -25,8 +46,5 @@
               td= bill.withdrawal_status_i18n
               td= bill.applied_at ? l(bill.applied_at, format: :short) : nil
               td= bill.withdrawn_at ? l(bill.withdrawn_at, format: :short) : nil
-              td
-                - if bill.unapplied?
-                  = link_to '出金申請', bill_path(bill), method: :put, data: { confirm: "本当に出金申請しますか？" }, class: 'btn btn-sm btn-primary'
 
       = paginate @bills

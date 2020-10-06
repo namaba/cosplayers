@@ -32,7 +32,7 @@ nav.navbar.navbar-expand-lg.navbar-white.bg-white
           - if current_user.creater
             .dropdown-divider
             = link_to '制作依頼', creater_requests_path(current_user.creater), class: 'dropdown-item'
-            = link_to '売り上げ', bills_path, class: 'dropdown-item'
+            = link_to '売上', bills_path, class: 'dropdown-item'
           .dropdown-divider
           = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item'
     - else

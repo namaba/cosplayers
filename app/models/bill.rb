@@ -22,6 +22,7 @@
 #
 class Bill < ApplicationRecord
   belongs_to :request
+  delegate :amount, to: :request
 
   scope :captured, -> { where(is_captured: true) }
 
