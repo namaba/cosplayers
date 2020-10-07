@@ -1,3 +1,5 @@
+
+
 .container
   / .card.mb-5
   /   .card-body
@@ -5,27 +7,30 @@
   /       li 2020/5/21 新機能追加のお知らせ
   /       li 2020/5/11 新機能追加のお知らせ
   /       li 2020/5/1  モデルマッチングサイトリリース
-  section.my-4
+  article.my-4
     .d-flex.justify-content-between.align-items-center.mb-2
-      h5 最新の作品
-      span.small= link_to 'もっとみる', photos_path
+      h5.p-2.font-weight-bold 最新の作品
+      span.small= link_to 'もっとみる >', photos_path
     .d-flex.flex-wrap
       - @photos.each do |photo|
-        .col-3.mb-3
+        .image-card
           .card
             = link_to photo_path(photo) do
-              = image_tag 'niki', class: 'card-img-top'
+              - if photo.photo.attached?
+                = image_tag url_for(photo.photo), class: 'card-img-top'
+              - else
+                = image_tag 'niki', class: 'card-img-top'
               .card-body
                 .card-text= photo.user.username
 
 
-  section.my-4
+  article.my-5
     .d-flex.justify-content-between.align-items-center.mb-2
-      h5 コスプレイヤー
-      span.small= link_to 'もっとみる', creaters_path
+      h5.p-2.font-weight-bold コスプレイヤー
+      span.small= link_to 'もっとみる >', creaters_path, class: ''
     .d-flex.flex-wrap
       - @creaters.each do |creater|
-        .col-3.mb-3
+        .image-card
           .card
             = link_to creater_path(creater.id)
               - if creater.user.avatar.attached?

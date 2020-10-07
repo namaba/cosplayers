@@ -1,28 +1,21 @@
 section.row.p-3
   .col-7
-    = image_tag 'araki_2', width: '100%'
+    = image_tag url_for(@photo.photo), width: '100%'
   .col-5
     .card.mb-3
       .card-body
-        .card-title  新木優子
-        p
-          | 写真に関する内容
-          | サンプルサンプルサンプルサンプルサンプルサンプル
-          | サンプルサンプルサンプルサンプルサンプルサンプル
-          | サンプルサンプルサンプルサンプルサンプルサンプル
-          | サンプルサンプルサンプルサンプルサンプルサンプル
+        h5.card-title= @creater.user.username
+        p.card-text= @creater.user.introduction
 
-    == render 'shared/request_condition'
+    == render 'shared/request_condition', creater: @creater
 
-
-
-
-.card
-  .card-body
-    .card-title おすすめ
-    .d-flex.flex-wrap
-      - 6.times do |i|
-        .col-2
-          = image_tag 'niki', width: '100%'
-          p niki
-
+/ TODO: おすすめ
+/ section.card
+/   .card-body
+/     .card-title おすすめ
+/     .d-flex.flex-wrap
+/       - 6.times do |i|
+/         .col-2
+/           = image_tag 'niki', width: '100%'
+/           p niki
+/

@@ -1,13 +1,11 @@
 .container.p-3
-  h1.text-center.mb-4 Photo
+  h5.p-2.font-weight-bold 作品集
   .d-flex.flex-wrap
     - @photos.each do |photo|
-      .col-3.mb-3
+      .image-card
         .card
           = link_to photo_path(photo) do
-            - if photo.photo.attached?
-              = image_tag url_for(photo.photo), class: 'card-img-top'
-            - else
-              = image_tag 'niki', class: 'card-img-top'
+            = image_tag url_for(photo.photo), class: 'card-img-top'
             .card-body
               .card-text= photo.user.username
+  = paginate @photos

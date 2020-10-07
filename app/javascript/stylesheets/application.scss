@@ -1,1 +1,11 @@
 @import '~bootstrap-material-design/scss/bootstrap-material-design';
+
+.pagination {
+  justify-content: center;
+}
+
+.image-card {
+  flex-basis: 20%;
+  padding: 5px;
+  margin-bottom: 10px;
+}

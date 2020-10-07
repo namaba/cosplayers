@@ -1,8 +1,8 @@
 .container.p-3
-  h1.text-center.mb-4 Cosplayers
+  h5.p-2.font-weight-bold コスプレイヤー
   .d-flex.flex-wrap
     - @creaters.each do |creater|
-      .col-3.mb-3
+      .image-card
         .card
           = link_to creater_path(creater.id)
             - if creater.user.avatar.attached?
@@ -11,3 +11,5 @@
               = image_tag 'niki', class: 'card-img-top'
             .card-body
               .card-text= creater.user.username
+
+  = paginate @creaters
