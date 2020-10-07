@@ -1,7 +1,10 @@
 .card
   .card-body
     .media.py-3.px-5.bg-white
-      = image_tag 'araki', size: '100', class: 'rounded-circle mr-5'
+      - if @creater.user.avatar.attached?
+        = image_tag url_for(@creater.user.avatar), size: '100', class: 'rounded-circle mr-5'
+      - else
+        = image_tag 'someone', size: '100', class: 'rounded-circle mr-5'
       .media-body
         h5.mt-0= @creater.user.username
         p= @creater.description
