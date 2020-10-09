@@ -1,0 +1,10 @@
+.container
+  .card
+    .card-body
+      = form_with model: [:creater, @work], local: true do |f|
+        #photos.field
+          = f.fields_for :photos do |p|
+            = render 'photo_fields', f: p
+          .links
+            = link_to_add_association '追加', f, :photos
+        = f.submit '保存', class: 'btn btn-success btn-raised'

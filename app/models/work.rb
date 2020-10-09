@@ -25,7 +25,10 @@ class Work < ApplicationRecord
 
   belongs_to :creater
   has_one :user, class_name: 'User', through: :creater
-  belongs_to :request
+  has_one :request
+  has_many :photos, dependent: :nullify
+  accepts_nested_attributes_for :photos, reject_if: :all_blank, allow_destroy: true
+
 
   validates_presence_of :creater_id
   validate :validate_photo

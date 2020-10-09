@@ -17,5 +17,7 @@
 #  fk_rails_...  (work_id => works.id)
 #
 class Photo < ApplicationRecord
+  has_one_attached :photo_image
+
   belongs_to :work
 end

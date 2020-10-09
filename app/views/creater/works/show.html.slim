@@ -1,0 +1,8 @@
+.container
+  - @work.photos.each do |photo|
+    .image-card
+      .card
+        = link_to photo_path(photo) do
+          = image_tag url_for(photo.photo_image), class: 'card-img-top'
+          .card-body
+            .card-text= @work.user.username
