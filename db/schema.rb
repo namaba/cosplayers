@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_143634) do
+ActiveRecord::Schema.define(version: 2020_10_09_140753) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 2020_10_07_143634) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "work_id", null: false
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["work_id"], name: "index_photos_on_work_id"
   end
 
   create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -119,12 +127,10 @@ ActiveRecord::Schema.define(version: 2020_10_07_143634) do
   create_table "works", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "creater_id", null: false
     t.bigint "request_id"
-    t.string "genre", default: "photo", null: false
     t.text "description"
-    t.boolean "is_published", default: false, null: false
-    t.boolean "is_premium", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_published", default: false, null: false
     t.index ["creater_id"], name: "index_works_on_creater_id"
     t.index ["request_id"], name: "index_works_on_request_id"
   end
@@ -133,6 +139,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_143634) do
   add_foreign_key "bills", "requests"
   add_foreign_key "creaters", "users"
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "photos", "works"
   add_foreign_key "requests", "creaters"
   add_foreign_key "requests", "users"
   add_foreign_key "works", "creaters"
