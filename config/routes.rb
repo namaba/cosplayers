@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'welcome#index'
   resources :creaters do
+    resources :works, module: :creaters
     resources :requests, module: :creaters do
       member do
         get :accept, :decline, :complete, :thank

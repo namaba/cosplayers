@@ -1,0 +1,10 @@
+.container
+  .card
+    .card-body
+      = form_with model: [@creater], local: true do |f|
+        #works.field
+          = f.fields_for @creater.works.build do |w|
+            = render 'work_fields', f: w
+          .links
+            = link_to_add_association '追加', f, :works
+        = f.submit '保存', class: 'btn btn-success btn-raised'
