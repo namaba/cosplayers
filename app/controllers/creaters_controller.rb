@@ -1,5 +1,6 @@
 class CreatersController < ApplicationController
-  before_action :set_creater, only: %i[edit update]
+  before_action :set_creater, only: %i[show edit update]
+  before_action :authenticate_own_user, only: %i[edit update]
 
   def index
     @creaters = Creater.page(params[:page]).per(20)
@@ -20,7 +21,7 @@ class CreatersController < ApplicationController
   end
 
   def show
-    @creater = Creater.includes(:user).find params[:id]
+    @photos = @creater.photos.page(params[:page]).per(5)
   end
 
   def edit
@@ -29,7 +30,11 @@ class CreatersController < ApplicationController
   private
 
   def set_creater
-    @creater = current_user.creater
+    @creater = Creater.includes(:user).find params[:id]
+  end
+
+  def authenticate_own_user
+    redirect_to root_path, alert: '許可されたユーザーではありません' unless @creater == current_user.creater
   end
 
   def creater_params

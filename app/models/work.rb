@@ -3,8 +3,7 @@
 # Table name: works
 #
 #  id           :bigint           not null, primary key
-#  genre        :string(255)      default("photo"), not null
-#  is_premium   :boolean          default(FALSE), not null
+#  description  :text(65535)
 #  is_published :boolean          default(FALSE), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -26,7 +25,10 @@ class Work < ApplicationRecord
 
   belongs_to :creater
   has_one :user, class_name: 'User', through: :creater
-  belongs_to :request
+  has_one :request
+  has_many :photos, dependent: :nullify
+  accepts_nested_attributes_for :photos, reject_if: :all_blank, allow_destroy: true
+
 
   validates_presence_of :creater_id
   validate :validate_photo
@@ -40,12 +42,6 @@ class Work < ApplicationRecord
 
     %w[image/jpg image/jpeg image/png image/gif].include?(photo.blob.content_type)
   end
-
-
-  enum genre: {
-    photo: 'photo',
-    movie: 'movie',
-  }
 
   before_validation do
     self.creater_id = request.creater_id if creater_id.nil? && request

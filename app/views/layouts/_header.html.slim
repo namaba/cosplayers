@@ -10,6 +10,7 @@ scss:
     font-size: 34px;
   }
 
+
 nav.navbar.navbar-expand-lg.navbar-white.bg-white
   a.navbar-brand href="#"  Cosplayers
   button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
@@ -23,14 +24,23 @@ nav.navbar.navbar-expand-lg.navbar-white.bg-white
       / li.nav-item= link_to 'requesters', requesters_path, class: "nav-link"
 
     - if user_signed_in?
+      - if current_user.creater
+        = link_to '投稿する', new_creater_work_path(current_user.creater), class: 'btn btn-success'
+      - else
+        button.btn.btn-success data-target="#needCreaterModal" data-toggle="modal" type="button"
+          | 投稿する
+
+
+
       .dropdown.pull-xs-right.mr-5
         button#lr1.btn.bmd-btn-icon.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
           i.material-icons account_circle
         .dropdown-menu.dropdown-menu-right aria-labelledby="lr1"
-          = link_to 'マイページ', user_path(current_user), class: 'dropdown-item'
+          = link_to 'アカウント', user_path(current_user), class: 'dropdown-item'
           = link_to '購入した作品', user_requests_path, class: 'dropdown-item'
           - if current_user.creater
             .dropdown-divider
+            = link_to 'マイページ', creater_path(current_user.creater), class: 'dropdown-item'
             = link_to '制作依頼', creater_requests_path(current_user.creater), class: 'dropdown-item'
             = link_to '売上', bills_path, class: 'dropdown-item'
           .dropdown-divider
@@ -39,7 +49,15 @@ nav.navbar.navbar-expand-lg.navbar-white.bg-white
       = link_to '新規登録', new_user_registration_path, class: 'btn btn-raised btn-primary mr-2'
       = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
 
-
+#needCreaterModal.modal.fade aria-hidden="true" aria-labelledby="needCreaterModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+      .modal-body.text-center.font-weight-bold
+        p コスプレイヤーになると投稿できます
+        = link_to 'コスプレイヤーになる', new_creater_path, class: 'btn btn-primary'
 
 
 

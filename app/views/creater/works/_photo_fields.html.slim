@@ -1,0 +1,5 @@
+.nested-fields
+  .field
+    = image_tag url_for(f.object.photo_image) if f.object.photo_image.attached?
+    = f.file_field :photo_image
+  = link_to_remove_association "削除", f

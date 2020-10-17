@@ -13,21 +13,27 @@ section.row.p-3
     == render 'shared/request_condition', creater: @creater
 
   .col-8
-    .card
-      .card-body
-        .card-title 公開
-        .d-flex.flex-wrap
-          - 12.times do |i|
-            .col-3.mb-2
-              = link_to photo_path(1)
-                = image_tag 'niki', width: '100%'
+    article.my-4
+      h5.font-weight-bold 公開作品
+      .d-flex.flex-wrap
+        - @photos.each do |photo|
+          .image-card
+            .card
+              = link_to photo_path(photo)
+                = image_tag url_for(photo.photo_image), class: 'card-img-top'
+                .card-body
+                  .card-text= photo.user.username
+    = paginate @photos
 
-    .card
-      .card-body
-        .card-title プライム
-        .d-flex.flex-wrap
-          - 12.times do |i|
-            .col-3.mb-2
-              = link_to photo_path(1)
-                = image_tag 'darenogare_1', width: '100%'
-
+    / article.my-4
+    /   .d-flex.justify-content-between.align-items-center.mb-2
+    /     h5.font-weight-bold プライム
+    /     span.small= link_to 'もっとみる >', photos_path
+    /   .d-flex.flex-wrap
+    /     - @creater.works.photo.each do |photo|
+    /       .image-card
+    /         .card
+    /           = link_to photo_path(photo)
+    /             = image_tag url_for(photo.photo), class: 'card-img-top'
+    /             .card-body
+    /               .card-text= photo.user.username

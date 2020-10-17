@@ -3,8 +3,7 @@
 # Table name: works
 #
 #  id           :bigint           not null, primary key
-#  genre        :string(255)      default("photo"), not null
-#  is_premium   :boolean          default(FALSE), not null
+#  description  :text(65535)
 #  is_published :boolean          default(FALSE), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
