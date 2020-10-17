@@ -43,12 +43,6 @@ class Work < ApplicationRecord
     %w[image/jpg image/jpeg image/png image/gif].include?(photo.blob.content_type)
   end
 
-
-  enum genre: {
-    photo: 'photo',
-    movie: 'movie',
-  }
-
   before_validation do
     self.creater_id = request.creater_id if creater_id.nil? && request
   end

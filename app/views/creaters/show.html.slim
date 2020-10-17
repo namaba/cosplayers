@@ -20,7 +20,7 @@ section.row.p-3
           .image-card
             .card
               = link_to photo_path(photo)
-                = image_tag url_for(photo.photo), class: 'card-img-top'
+                = image_tag url_for(photo.photo_image), class: 'card-img-top'
                 .card-body
                   .card-text= photo.user.username
     = paginate @photos

@@ -20,4 +20,6 @@ class Photo < ApplicationRecord
   has_one_attached :photo_image
 
   belongs_to :work
+  has_one :creater, class_name: 'Creater', through: :work
+  has_one :user, class_name: 'User', through: :creater
 end

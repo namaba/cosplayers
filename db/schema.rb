@@ -128,9 +128,9 @@ ActiveRecord::Schema.define(version: 2020_10_09_140753) do
     t.bigint "creater_id", null: false
     t.bigint "request_id"
     t.text "description"
+    t.boolean "is_published", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_published", default: false, null: false
     t.index ["creater_id"], name: "index_works_on_creater_id"
     t.index ["request_id"], name: "index_works_on_request_id"
   end

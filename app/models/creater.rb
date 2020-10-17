@@ -24,5 +24,5 @@ class Creater < ApplicationRecord
   has_many :bills, through: :requests
   has_many :works, dependent: :nullify
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
-  has_many :photos, -> {photo}, class_name: 'Work'
+  has_many :photos, through: :works
 end
