@@ -44,6 +44,10 @@ class User < ApplicationRecord
 
   validate :validate_avatar
 
+  after_create do
+    self.create_creater(description: '', min_charge: 1000)
+  end
+
   def validate_avatar
     errors.add(:avatar, "画像データではありません。") unless image?
   end
