@@ -1,6 +1,14 @@
 
 
 .container
+  / TODO: 一般向けリリースするときに削除
+  - if current_user&.creater&.photos&.blank?
+    .card
+      .card-body
+        h6.mb-0
+          | 写真を投稿して
+          = link_to ' マイページ ', creater_path(current_user.creater), class: 'text-primary '
+          | を完成させよう！
   / .card.mb-5
   /   .card-body
   /     ul.list-unstyled.mb-0

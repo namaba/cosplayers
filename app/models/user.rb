@@ -44,6 +44,7 @@ class User < ApplicationRecord
 
   validate :validate_avatar
 
+  # TODO: 一般ユーザーに公開するときに削除
   after_create do
     self.create_creater(description: '', min_charge: 1000)
   end

@@ -21,7 +21,7 @@ class CreatersController < ApplicationController
   end
 
   def show
-    @photos = @creater.photos.page(params[:page]).per(5)
+    @photos = @creater.photos.page(params[:page]).per(20)
   end
 
   def edit

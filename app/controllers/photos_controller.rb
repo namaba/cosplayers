@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_work, only: %i[show]
+  before_action :set_photo, only: %i[show]
   before_action :set_creater, only: %i[show]
 
   def index
@@ -11,8 +11,8 @@ class PhotosController < ApplicationController
 
   private
 
-  def set_work
-    @photo = Work.find params[:id]
+  def set_photo
+    @photo = Photo.find params[:id]
   end
 
   def set_creater

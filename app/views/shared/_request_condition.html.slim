@@ -1,11 +1,13 @@
 .card
   .card-body
     section.mb-3
-      - if current_user
-        .mb-1= link_to '新規リクエスト', new_creater_request_path(creater), class: 'btn btn-raised btn-success w-100'
-      - else
-        button.btn.btn-success.btn-raised.w-100 data-target="#registrationModal" data-toggle="modal" type="button"
-          | 新規リクエスト
+      .mb-1= link_to '新規リクエスト', nil, class: 'btn btn-raised btn-success disabled w-100'
+      small.text-muted ※ 公式リリース後リクエスト可能になります。
+      / - if current_user
+      /   .mb-1= link_to '新規リクエスト', new_creater_request_path(creater), class: 'btn btn-raised btn-success w-100'
+      / - else
+      /   button.btn.btn-success.btn-raised.w-100 data-target="#registrationModal" data-toggle="modal" type="button"
+      /     | 新規リクエスト
         == render 'shared/registration_modal'
     table.table.table-borderless
       tr
