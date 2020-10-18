@@ -1,10 +1,20 @@
+scss:
+  .icon {
+    font-size: 20px;
+  }
 .container
-  .card
-    .card-body
-      = form_with model: [:creater, @work], local: true do |f|
-        #photos.field
-          = f.fields_for :photos do |p|
-            = render 'photo_fields', f: p
-          .links
-            = link_to_add_association '追加', f, :photos
-        = f.submit '保存', class: 'btn btn-success btn-raised'
+  .col-8.mx-auto
+    .card
+      .card-header.text-center
+        h4.font-weight-bold.mb-0 作品投稿
+      .card-body.col-7.mx-auto
+        = form_with model: [:creater, @work], local: true do |f|
+          #photos.field.mb-4
+            = f.fields_for :photos do |p|
+              = render 'photo_fields', f: p
+            .links.text-center.mt-3
+              = link_to_add_association f, :photos, class: 'btn btn-primary' do
+                .d-flex.align-items-center
+                  i.material-icons.icon add
+                  span 写真追加
+          .text-center= f.submit '保存', class: 'btn btn-success btn-raised  w-50'

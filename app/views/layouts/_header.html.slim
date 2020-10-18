@@ -26,7 +26,7 @@ nav.navbar.navbar-expand-lg.navbar-white.bg-white
     - if user_signed_in?
       - if current_user.creater
         = link_to '投稿する', new_creater_work_path(current_user.creater), class: 'btn btn-primary btn-raised mb-0'
-        = link_to 'マイページ', creater_path(current_user.creater), class: 'btn mb-0'
+        = link_to 'マイページ', creater_path(current_user.creater), class: 'btn btn-link mb-0'
       - else
         button.btn.btn-success data-target="#needCreaterModal" data-toggle="modal" type="button"
           | 投稿する
