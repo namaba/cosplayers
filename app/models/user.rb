@@ -65,7 +65,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:twitter]
 
-
   def self.from_omniauth(auth)
     find_or_initialize_by(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]
@@ -74,6 +73,10 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.email = User.dumy_email(auth)
     end
+  end
+
+  def profile_complete?
+    introduction && avatar.attached? && creater&.photos&.present?
   end
 
   private

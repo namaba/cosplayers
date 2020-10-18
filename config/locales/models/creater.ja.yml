@@ -2,6 +2,6 @@ ja:
   activerecord:
     attributes:
       creater:
-        description: 自己紹介
+        description: 詳細情報
         min_charge: 最低金額
         is_accepting: リクエスト受付中

@@ -1,20 +1,16 @@
 
 
 .container
-  / TODO: 一般向けリリースするときに削除
-  - if current_user&.creater&.photos&.blank?
-    .card
+  - if user_signed_in? && !current_user.profile_complete?
+    .card.mb-5
+      .card-header
+        h5.font-weight-bold.mb-0 マイページを完成させよう
       .card-body
-        h6.mb-0
-          | 写真を投稿して
-          = link_to ' マイページ ', creater_path(current_user.creater), class: 'text-primary '
-          | を完成させよう！
-  / .card.mb-5
-  /   .card-body
-  /     ul.list-unstyled.mb-0
-  /       li 2020/5/21 新機能追加のお知らせ
-  /       li 2020/5/11 新機能追加のお知らせ
-  /       li 2020/5/1  モデルマッチングサイトリリース
+        ul.list-unstyled.mb-0
+          li= link_to '自己紹介を登録してください', edit_user_path(current_user), class: 'text-primary'  if current_user.introduction.blank?
+          li= link_to 'プロフィール画像を登録してください', edit_user_path(current_user), class: 'text-primary' unless current_user.avatar.attached?
+          li= link_to '写真を投稿してみよう', new_creater_work_path(current_user.creater), class: 'text-primary' if current_user&.creater&.photos&.blank?
+
   article.my-4
     .d-flex.justify-content-between.align-items-center.mb-2
       h5.p-2.font-weight-bold 最新の作品
@@ -24,7 +20,8 @@
         .image-card
           .card
             = link_to photo_path(photo) do
-              = image_tag url_for(photo.photo_image), class: 'card-img-top'
+              = image_tag photo.photo_image.variant(combine_options:{gravity: :center, resize:"200x200^", crop:"200x200+0+0"}).processed, class: 'card-img-top'
+
               .p-2
                 .card-text= photo.user.username
                 .card-text= photo.description&.truncate(15)
@@ -40,7 +37,7 @@
           .card
             = link_to creater_path(creater.id)
               - if creater.user.avatar.attached?
-                = image_tag url_for(creater.user.avatar), class: 'card-img-top'
+                = image_tag creater.user.avatar.variant(combine_options:{gravity: :center, resize:"200x200^", crop:"200x200+0+0"}).processed, class: 'card-img-top'
               - else
                 = image_tag 'someone', class: 'card-img-top'
               .card-body

@@ -1,5 +1,7 @@
 .container
-  .card
-    .card-body
-      h3 ユーザー編集
+  .col-8.mx-auto
+    .card
+      .card-header.text-center
+        h4.font-weight-bold.mb-0 コスプレイヤー新規登録
+      .card-body.col-8.mx-auto
       = render 'form', creater: @creater

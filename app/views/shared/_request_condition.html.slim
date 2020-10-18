@@ -22,3 +22,6 @@
       tr
         th 詳細情報
         td= creater.description
+
+    - if current_user_is?(creater)
+      = link_to '編集', edit_creater_path(creater), class: 'btn btn-primary'

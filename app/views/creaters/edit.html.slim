@@ -1,5 +1,7 @@
 .container
-  .card
-    .card-body
-      h3 コスプレイヤー編集
-      = render 'form', creater: @creater
+  .col-8.mx-auto
+    .card
+      .card-header.text-center
+        h4.font-weight-bold.mb-0 コスプレイヤー編集
+      .card-body.col-8.mx-auto
+        = render 'form', creater: @creater

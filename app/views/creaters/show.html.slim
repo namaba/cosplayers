@@ -7,8 +7,11 @@
         - else
           = image_tag 'someone', size: '100', class: 'rounded-circle mr-5'
         .media-body
-          h5.mt-0= @creater.user.username
-          p= @creater.description
+          h5.mt-0
+            = @creater.user.username
+            - if current_user_is?(@creater)
+              span= link_to '編集', edit_user_path(@creater.user), class: 'btn btn-primary'
+          p= @creater.user.introduction
 
   section.row
     .col-4
@@ -29,8 +32,8 @@
               .image-card
                 .card
                   = link_to photo_path(photo)
-                    = image_tag url_for(photo.photo_image), class: 'card-img-top'
-                    .card-body
+                    = image_tag photo.photo_image.variant(combine_options:{gravity: :center, resize:"200x200^", crop:"200x200+0+0"}).processed, class: 'card-img-top'
+                    .p-2
                       .card-text= photo.description&.truncate(15)
       = paginate @photos
 
