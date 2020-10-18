@@ -14,13 +14,13 @@
       == render 'shared/request_condition', creater: @creater
 
     .col-8
-      - if current_user&.creater == @creater && @creater.photos.present?
+      - if current_user_is?(@creater) && @creater.photos.present?
         = link_to '投稿する', new_creater_work_path(current_user.creater), class: 'btn btn-primary btn-raised mt-3'
       article.my-4
         h5.font-weight-bold 公開作品
         - if @creater.photos.blank?
           p まだ作品がありません。
-          - if current_user&.creater == @creater
+          - if current_user_is?(@creater)
             = link_to '投稿する', new_creater_work_path(current_user.creater), class: 'btn btn-primary btn-raised'
         - else
           .d-flex.flex-wrap
@@ -30,7 +30,7 @@
                   = link_to photo_path(photo)
                     = image_tag url_for(photo.photo_image), class: 'card-img-top'
                     .card-body
-                      .card-text= photo.user.username
+                      .card-text= photo.description&.truncate(15)
       = paginate @photos
 
       / article.my-4

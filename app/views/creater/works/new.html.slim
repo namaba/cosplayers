@@ -9,7 +9,7 @@ scss:
         h4.font-weight-bold.mb-0 作品投稿
       .card-body.col-7.mx-auto
         = form_with model: [:creater, @work], local: true do |f|
-          #photos.field.mb-4
+          #photos.field.mb-2
             = f.fields_for :photos do |p|
               = render 'photo_fields', f: p
             .links.text-center.mt-3

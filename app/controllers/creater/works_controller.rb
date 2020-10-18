@@ -9,7 +9,7 @@ class Creater::WorksController < ApplicationController
     @work = current_user.creater.works.build(work_params)
 
     if @work.save
-      redirect_to creater_work_path(@work), notice: '投稿しました'
+      redirect_to creater_path(current_user.creater), notice: '投稿しました'
     else
       flash.now[:alert] = '投稿に失敗しました'
       render :new
@@ -29,7 +29,7 @@ class Creater::WorksController < ApplicationController
     params.required(:work).permit(
       :creater_id,
       :is_published,
-      photos_attributes: [:id, :work_id, :photo_image, :_destroy]
+      photos_attributes: [:id, :work_id, :description, :photo_image, :_destroy]
     )
   end
 end

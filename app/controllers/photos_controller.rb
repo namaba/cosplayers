@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: %i[show]
-  before_action :set_creater, only: %i[show]
+  before_action :set_photo, only: %i[show destroy]
+  before_action :set_creater, only: %i[show destroy]
 
   def index
     @photos = Photo.includes(:user).page(params[:page]).per(20)

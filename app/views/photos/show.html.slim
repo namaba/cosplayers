@@ -6,16 +6,11 @@ section.row.p-3
       .card-body
         h5.card-title= link_to @creater.user.username, creater_path(@creater)
         p.card-text= @creater.user.introduction
+    .card.mb-3
+      .card-body
+        h5.card-title 作品説明
+        p.card-text= @photo.description
 
     == render 'shared/request_condition', creater: @creater
-
-/ TODO: おすすめ
-/ section.card
-/   .card-body
-/     .card-title おすすめ
-/     .d-flex.flex-wrap
-/       - 6.times do |i|
-/         .col-2
-/           = image_tag 'niki', width: '100%'
-/           p niki
-/
+    - if current_user_is?(@photo.creater)
+      = link_to '削除', creater_photo_path(@photo), method: :delete, data: { confirm: '本当に削除しますか？' } , class: 'btn btn-danger mt-3'

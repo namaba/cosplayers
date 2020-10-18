@@ -1,7 +1,7 @@
 .nested-fields.mt-5
   .field
     = image_tag url_for(f.object.photo_image) if f.object.photo_image.attached?
-    .d-flex.align-items-center
+    .d-flex.align-items-center.justify-content-between
       = f.file_field :photo_image
       = link_to_remove_association "削除", f, class: 'btn btn-secondary'
     = f.text_area :description, rows: 2, class: 'form-control form-control-sm mt-2', placeholder: '作品説明'
