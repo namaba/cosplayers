@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      photo:
+        description: 作品説明
+

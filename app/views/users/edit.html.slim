@@ -1,14 +1,20 @@
 .container
-  .card
-    .card-body
-      h3 ユーザー編集
-      = form_with model: current_user, local: true do |f|
-        .form-group
-          = f.label User.human_attribute_name(:username), class: 'bmd-label-floating'
-          = f.text_field :username, class: 'form-control', required: true
-        .form-group
-          = f.label User.human_attribute_name(:introduction), class: 'bmd-label-floating'
-          = f.text_area :introduction, rows: 10, class: 'form-control', required: true
-        .field
-          = f.file_field :avatar
-        = f.submit '送信', class: 'btn btn-success btn-raised'
+  .col-8.mx-auto
+    .card
+      .card-header.text-center
+        h4.font-weight-bold.mb-0 ユーザー編集
+      .card-body.col-7.mx-auto
+
+        = form_with model: current_user, local: true do |f|
+          .form-group.mt-3
+            = f.label 'プロフィール画像', class: 'bmd-label-floating'
+            .mb-3= image_tag url_for(f.object.avatar), width: '100%' if f.object.avatar.attached?
+            = f.file_field :avatar
+          .form-group
+            = f.label User.human_attribute_name(:username), class: 'bmd-label-floating'
+            = f.text_field :username, class: 'form-control', required: true
+          .form-group
+            = f.label User.human_attribute_name(:introduction), class: 'bmd-label-floating'
+            = f.text_area :introduction, rows: 10, class: 'form-control', required: true
+
+          .text-center= f.submit '更新', class: 'btn btn-success btn-raised  w-100 mt-4'
