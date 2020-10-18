@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # 作品の新規登録、編集、削除用
   namespace :creater do
     resources :works
-    resources :photos, only: %i[ edit update destroy]
+    resources :photos, only: %i[edit update destroy]
   end
   resources :creaters do
     resources :works, module: :creaters

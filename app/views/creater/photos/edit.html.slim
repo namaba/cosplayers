@@ -1,0 +1,18 @@
+.container
+  .col-8.mx-auto
+    .card
+      .card-header.text-center
+        h4.font-weight-bold.mb-0 作品編集
+      .card-body.col-7.mx-auto
+        = form_with model: [:creater, @photo], local: true do |f|
+          .form-group
+            label.font-weight-bold 変更前
+            = image_tag url_for(f.object.photo_image), width: '100%' if f.object.photo_image.attached?
+
+          .form-group
+            label.font-weight-bold 新しい画像
+            .mb-2
+              = f.file_field :photo_image
+          .form-group
+            = f.text_area :description, rows: 2, class: 'form-control form-control-sm mt-2', placeholder: '作品説明'
+          .text-center= f.submit '更新', class: 'btn btn-success btn-raised  w-50'

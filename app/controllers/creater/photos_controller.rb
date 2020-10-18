@@ -1,5 +1,18 @@
 class Creater::PhotosController < ApplicationController
-  before_action :set_photo, only: %i[destroy]
+  before_action :set_photo, only: %i[edit update destroy]
+
+  def edit
+
+  end
+
+  def update
+    if @photo.update(photo_params)
+      redirect_to @photo, notice: '更新しました'
+    else
+      flash.now[:alert] = '更新に失敗しました'
+      render :edit
+    end
+  end
 
   def destroy
     if @photo.destroy
@@ -14,5 +27,14 @@ class Creater::PhotosController < ApplicationController
 
   def set_photo
     @photo = Photo.find params[:id]
+  end
+
+  def photo_params
+    params.require(:photo).permit(
+      :id,
+      :work_id,
+      :description,
+      :photo_image,
+    )
   end
 end

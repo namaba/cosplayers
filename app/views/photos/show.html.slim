@@ -1,16 +1,20 @@
-section.row.p-3
-  .col-7
-    = image_tag url_for(@photo.photo_image), width: '100%'
-  .col-5
-    .card.mb-3
-      .card-body
-        h5.card-title= link_to @creater.user.username, creater_path(@creater)
-        p.card-text= @creater.user.introduction
-    .card.mb-3
-      .card-body
-        h5.card-title 作品説明
-        p.card-text= @photo.description
+.container
+  section.row.p-3
+    .col-7
+      = image_tag url_for(@photo.photo_image), width: '100%'
+    .col-5
+      .card.mb-3
+        .card-body
+          h5.card-title= link_to @creater.user.username, creater_path(@creater)
+          p.card-text= @creater.user.introduction
+      .card.mb-3
+        .card-body
+          h5.card-title
+            | 作品説明
+            - if current_user_is?(@photo.creater)
+              span= link_to '編集', edit_creater_photo_path(@photo), class: 'btn btn-primary'
+          p.card-text= @photo.description
 
-    == render 'shared/request_condition', creater: @creater
-    - if current_user_is?(@photo.creater)
-      = link_to '削除', creater_photo_path(@photo), method: :delete, data: { confirm: '本当に削除しますか？' } , class: 'btn btn-danger mt-3'
+      == render 'shared/request_condition', creater: @creater
+      - if current_user_is?(@photo.creater)
+        = link_to '削除', creater_photo_path(@photo), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger mt-3'
