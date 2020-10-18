@@ -12,7 +12,7 @@ scss:
           #photos.field.mb-2
             = f.fields_for :photos do |p|
               = render 'photo_fields', f: p
-            .links.text-center.mt-3
+            .links.text-center.mt-5
               = link_to_add_association f, :photos, class: 'btn btn-primary' do
                 .d-flex.align-items-center
                   i.material-icons.icon add
