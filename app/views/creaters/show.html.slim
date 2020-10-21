@@ -22,7 +22,7 @@ scss:
 
   section.row
     .col-4
-      == render 'shared/request_condition', creater: @creater
+      == render 'shared/request_condition', creater: @creater, back_url: creater_path(@creater)
 
     .col-8
       - if current_user_is?(@creater) && @creater.photos.present?

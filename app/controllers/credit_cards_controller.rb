@@ -8,13 +8,14 @@ class CreditCardsController < ApplicationController
     customer = Payjp::Customer.create(
       email: current_user.email,
       card: params['payjp-token'],
-      metadata: {user_id: current_user.id}
+      metadata: { user_id: current_user.id }
     )
     @card = current_user.build_credit_card(customer_id: customer.id, card_id: customer.default_card)
     if @card.save
-      redirect_to @card
+      back_url = params[:back_url].presence || @card
+      redirect_to back_url, notice: 'クレジットカードを登録しました'
     else
-      redirect_to current_user
+      redirect_to current_user, alert: 'クレジットカードの登録失敗しました'
     end
   end
 

@@ -32,7 +32,7 @@ class Creaters::RequestsController < ApplicationController
       render :new
     end
   end
-  
+
 
   def thank
   end
