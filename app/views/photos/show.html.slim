@@ -15,6 +15,6 @@
               span= link_to '編集', edit_creater_photo_path(@photo), class: 'btn btn-primary'
           p.card-text= @photo.description
 
-      == render 'shared/request_condition', creater: @creater
+      == render 'shared/request_condition', creater: @creater, back_url: photo_path(@photo)
       - if current_user_is?(@photo.creater)
         = link_to '削除', creater_photo_path(@photo), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger mt-3'

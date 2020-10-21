@@ -21,7 +21,7 @@ class CreatersController < ApplicationController
   end
 
   def show
-    @photos = @creater.photos.order(id: :desc).page(params[:page]).per(20)
+    @photos = @creater.photos.order(id: :desc).page(params[:page]).per(16)
   end
 
   def edit
