@@ -17,13 +17,13 @@ class Creaters::RequestsController < ApplicationController
 
   def new
     @request = current_user.requests.build
-    @request.works.build
   end
 
   def create
-    redirect_to new_creater_request_path, alert: 'クレジットカードを登録してください' and return unless current_user.credit_card&.customer_id
+    # redirect_to new_creater_request_path, alert: 'クレジットカードを登録してください' and return unless current_user.credit_card&.customer_id
 
     @request = current_user.requests.build(request_params.merge(creater: @creater, status: :requesting, requested_at: Time.current))
+    render :new, alert: 'クレジットカードを登録してください' and return unless current_user.credit_card&.customer_id
 
     if @request.create_with_bill
       redirect_to thank_creater_request_path(@creater, @request), notice: '依頼しました'
@@ -32,6 +32,7 @@ class Creaters::RequestsController < ApplicationController
       render :new
     end
   end
+  
 
   def thank
   end
