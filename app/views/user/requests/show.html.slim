@@ -10,7 +10,7 @@ scss:
       = render 'request_info', request: @request
       - if @request.requesting?
         .text-center.mt-4
-          = link_to '辞退する', user_request_path(@request), class: 'btn btn-secondary mr-3'
+          = link_to '辞退する', method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-secondary mr-3'
 
   - if @request.completed? && @request.works.present?
     .card

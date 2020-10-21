@@ -4,7 +4,8 @@
   /   = f.select :genre, Request.genres_i18n.invert, {selected: :photo}, class: 'form-control', required: true
   .form-group
     = f.label Request.human_attribute_name(:amount), class: 'bmd-label-floating'
-    = f.text_field :amount, class: 'form-control', required: true
+    / = f.text_field :amount, value: number_to_currency(f.object.amount.to_f, :precision => 0, unit: ''), class: 'form-control', required: true
+    = f.number_field :amount, min: 1000, max: 100_000, step: 500, class: 'form-control w-25', required: true
   .form-group
     = f.label Request.human_attribute_name(:description), class: 'bmd-label-floating'
     = f.text_area :description, rows: 10, class: 'form-control', required: true

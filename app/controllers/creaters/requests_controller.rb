@@ -16,15 +16,13 @@ class Creaters::RequestsController < ApplicationController
   end
 
   def new
-    @request = current_user.requests.build
+    @request = current_user.requests.build(amount: @creater.min_charge)
   end
 
   def create
-    # redirect_to new_creater_request_path, alert: 'クレジットカードを登録してください' and return unless current_user.credit_card&.customer_id
+    redirect_to new_creater_request_path, alert: 'クレジットカードを登録してください' and return unless current_user.credit_card&.customer_id
 
     @request = current_user.requests.build(request_params.merge(creater: @creater, status: :requesting, requested_at: Time.current))
-    render :new, alert: 'クレジットカードを登録してください' and return unless current_user.credit_card&.customer_id
-
     if @request.create_with_bill
       redirect_to thank_creater_request_path(@creater, @request), notice: '依頼しました'
     else
