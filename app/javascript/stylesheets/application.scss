@@ -1,5 +1,25 @@
 @import '~bootstrap-material-design/scss/bootstrap-material-design';
 
+$sp: 499px;
+$tab: 899px;
+$pc: 1200px;
+
+@mixin sp {
+  @media (max-width: $sp) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: $tab) {
+    @content;
+  }
+}
+@mixin pc {
+  @media (max-width: $pc) {
+    @content;
+  }
+}
+
 .pagination {
   justify-content: center;
 }
@@ -8,5 +28,8 @@
   flex-basis: 20%;
   padding: 5px;
   margin-bottom: 10px;
+  @include sp {
+    flex-basis: 50%;
+  }
 }
 

@@ -3,16 +3,31 @@ scss:
     flex-basis: 25%;
     padding: 5px;
     margin-bottom: 10px;
+    @media (max-width: 899px) {
+      flex-basis: 50%;
+    }
+  }
+
+  .creater-content {
+    img {
+      margin-right: 30px;
+    }
+
+    @media (max-width: 899px) {
+      img {
+        margin-right: 10px;
+      }
+    }
   }
 
 .container
   .card.mb-3
     .card-body
-      .media.py-3.px-5.bg-white
+      .media.creater-content
         - if @creater.user.avatar.attached?
-          = image_tag url_for(@creater.user.avatar), size: '100', class: 'rounded-circle mr-5'
+          = image_tag url_for(@creater.user.avatar), size: '100', class: 'rounded-circle'
         - else
-          = image_tag 'someone', size: '100', class: 'rounded-circle mr-5'
+          = image_tag 'someone', size: '100', class: 'rounded-circle'
         .media-body
           h5.mt-0
             = @creater.user.username
@@ -21,10 +36,10 @@ scss:
           p= @creater.user.introduction
 
   section.row
-    .col-4
+    .col-12.col-md-4
       == render 'shared/request_condition', creater: @creater, back_url: creater_path(@creater)
 
-    .col-8
+    .col-12.col-md-8
       - if current_user_is?(@creater) && @creater.photos.present?
         = link_to '投稿する', new_creater_work_path(current_user.creater), class: 'btn btn-primary btn-raised mt-3'
       article.my-4
@@ -38,7 +53,7 @@ scss:
             - @photos.each do |photo|
               .image-card
                 .card
-                  = link_to photo_path(photo)
+                  = link_to photo_path(photo) do
                     = image_tag photo.photo_image.variant(combine_options: { gravity: :center, resize: "200x200^", crop: "200x200+0+0" }).processed, class: 'card-img-top'
                     .p-2
                       .card-text= photo.description&.truncate(15)
