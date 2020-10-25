@@ -1,0 +1,102 @@
+// いろんなファイルから読み込んで使う既定の変数
+
+$laycome-base: #8bb0fa;
+$laycome-second: #e7f711;
+$laycome-color-red: #ff4736;
+$laycome-color-blue: #6b95df;
+$laycome-color-green: #4fb871;
+$laycome-color-dark-grey: #848484;
+$laycome-color-grey: #999999;
+$laycome-color-yellow: #ffd35d;
+
+
+//
+// Color system
+//
+$base-black: #212121;
+$base-gray: #FCFCFC;
+
+
+// $primary, $success などに関係する色のみカスタム（$purple, $pink などは使うことがあればカスタムする）
+$blue:    $laycome-color-blue;
+$red:     $laycome-color-red;
+$yellow:  $laycome-color-yellow;
+$green:   $laycome-color-green;
+
+// $info 以外は上記の色とデフォルトのグレー系がセットされる
+$info: $blue;
+$light: darken($base-gray,30%);
+
+// Layouts
+$grid-gutter-width: 10px;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif: 'Hiragino Sans', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+$font-size-base: .875rem; // Bootstrap デフォルトの 1rem = 16px は日本語には少し大きすぎるので 87.5% して 14px をデフォルトにしたい
+
+$font-weight-light: 200;
+$font-weight-normal: 300;
+$font-weight-bold: 500;
+
+$h1-font-size: $font-size-base * 2;
+$h2-font-size: $font-size-base * 1.75;
+$h3-font-size: $font-size-base * 1.5;
+$h4-font-size: $font-size-base * 1.25;
+$h5-font-size: $font-size-base;
+$h6-font-size: $font-size-base;
+$headings-font-weight: $font-weight-light;
+
+// Alert
+$alert-bg-level: 0;
+
+$alert-success-bg: $laycome-color-green;
+$alert-success-text: white;
+$alert-danger-bg: $laycome-color-red;
+$alert-danger-text: white;
+
+// Body
+$body-bg: #EEEFF2;
+$text-color: #505050;
+
+// リンク
+$link-color: $laycome-color-blue;
+$link-hover-color: $laycome-color-blue;
+
+// P パラグラフ
+$paragraph-margin-bottom: .625rem;
+
+// ボタン
+$btn-font-weight: 200;
+
+$btn-default-color: $text-color;
+$btn-default-bg: #EEEFF2;
+
+$btn-border-radius-base: 0;
+$btn-border-radius-large: 0;
+$btn-border-radius-small: 0;
+
+// Navbar
+$navbar-height: 50px;
+$navbar-margin-bottom: 0;
+$navbar-default-bg: #E6E9ED;
+$navbar-default-border: #DADADA;
+$navbar-default-link-color: $laycome-color-dark-grey;
+$navbar-default-link-hover-color: $laycome-color-dark-grey;
+
+// HR
+$hr-border: $laycome-color-dark-grey;
+
+// Cards
+
+$card-border-color: transparent;

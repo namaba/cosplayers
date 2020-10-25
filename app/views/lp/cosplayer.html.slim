@@ -1,0 +1,124 @@
+.lp
+  / header.header-lp
+  /   .innerWrap
+  /     h1.tagline
+  /       = image_tag 'logo-laycome.svg', class: 'logo'
+  /       | 簡単にファンから依頼がもらえる
+  /! Main Visual
+  section.mv
+    .innerWrap
+      = image_tag 'mv', class: 'mv-img'
+      .content
+        h1.title
+          | ファンから依頼もらえちゃう。
+        p.mb-0
+          | リクエストを受けて、自分で撮って
+          br
+          | オリコスを広めよう
+          br
+          | 依頼受付、依頼進捗管理、決済機能まで。
+        = link_to '登録はこちらから', new_user_registration_path, class: 'btn-regi'
+  /! //Main Visual
+  /! flow
+  section.flow
+    h2.section-title
+      | サービスの流れ
+    ol.innerWrap
+      li.card-vr
+        h3.catch
+          span> 1
+          | マイアトリエ開展
+        .card-content
+          = image_tag 'step1'
+          p.description
+            | 作品を登録して、
+            br
+            | 自分だけのアトリエを作ろう
+            br
+            | 開展したことをTwitterに載せよう！
+      li.card-vr
+        h3.catch
+          span> 2
+          | リクエストを受ける
+        .card-content
+          = image_tag 'step2'
+          p.description
+            | アピール作品をみてもらって
+            br
+            | リクエストを受けよう
+      li.card-vr
+        h3.catch
+          span> 3
+          | 宅コス撮影
+        .card-content
+          = image_tag 'step3'
+          p.description 自分で撮影して、作品を送る
+  /! //flow
+  /! flow
+  section.flow
+    h2.section-title
+      | マイアトリエ開展
+    ol.innerWrap
+      li.card-vr
+        h3.catch
+          | 簡単登録
+        .card-content
+          = image_tag 'step1'
+          p.description Twitterアカウントで簡単登録
+      li.card-vr
+        h3.catch
+          | アピール作品を飾る
+        .card-content
+          = image_tag 'step2'
+          p.description
+            | SNSにマイアトリエのURLを貼って
+            br
+            | ファンからの依頼を待つ
+      li.card-vr
+        h3.catch
+          | マイメニューを作成
+        .card-content
+          = image_tag 'step3'
+          p.description 撮ったことがある衣装、撮ってみたい衣装を登録し、自分だけのメニューを作成
+
+  /! //flow
+  /! flow
+  section.flow
+    h2.section-title
+      | 機能
+    ol.innerWrap
+      li.card-vr
+        h3.catch
+          | マイアトリエ
+        .card-content
+          = image_tag 'step1'
+          p.description 会員登録をしてアピール用の作品を登録
+      li.card-vr
+        h3.catch
+          | 依頼進捗管理
+        .card-content
+          = image_tag 'step2'
+          p.description SNSにマイページのURLを貼ってファンからの依頼を待つ
+      li.card-vr
+        h3.catch
+          | 決済機能
+        .card-content
+          = image_tag 'step3'
+          p.description 依頼がきたら作品を自分で撮影し納品
+  /! //flow
+  section.btn-outer
+    = link_to '登録はこちらから', new_user_registration_path, class: 'btn-regi'
+  footer.footer-lp
+    dl.footer-link
+      dt Laycomeについて
+      dd
+        a href=""  運営会社
+      dd
+        a href=""  利用規約（求職者）
+      dd
+        a href=""  お問い合わせ
+    .copyright
+      | \&copy;
+      javascript:
+        | new Date().getFullYear()>2016&&document.write(new Date().getFullYear());
+      | , Laycome, Inc.
