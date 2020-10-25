@@ -1,45 +1,31 @@
 @import "variables";
-
-$sp: 499px;
-$tab: 899px;
-$pc: 1200px;
-
-@mixin sp {
-	@media (max-width: $sp) {
-		@content;
-	}
-}
-@mixin tab {
-	@media (max-width: $tab) {
-		@content;
-	}
-}
-@mixin pc {
-	@media (max-width: $pc) {
-		@content;
-	}
-}
+@import "application";
 
 ////// Atom //////
 a {
   text-decoration: none;
   color: $laycome-color-blue;
+
   &:hover {
-    color: darken($laycome-color-blue,20%);
+    color: darken($laycome-color-blue, 20%);
     transition: ease .2s;
   }
 }
+
 strong {
   font-weight: 600;
 }
+
 button {
   border: 0;
 }
+
 .text-link {
   display: block;
   margin-top: 30px;
   font-size: 1.2rem;
 }
+
 ////// Molecule //////
 .btn-regi {
   display: block;
@@ -57,6 +43,7 @@ button {
     font-size: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   }
+
   &:hover {
     background: darken($laycome-base, 5%);
     text-decoration: none;
@@ -64,18 +51,23 @@ button {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
     transition: 0.2s ease;
   }
+
   span {
     font-weight: bold;
   }
 }
+
 .btn-outer {
   margin: 100px auto;
+
   & > [class^="btn"] {
     margin: 0 auto;
   }
+
   @include sp {
     margin: 30px auto 60px;
   }
+
   .text-link {
     text-align: center;
   }
@@ -86,6 +78,7 @@ button {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .header-lp {
   padding: 10px 20px;
   background: $laycome-base;
@@ -93,15 +86,18 @@ button {
   @include sp {
     padding: 5px 10px;
   }
+
   .innerWrap {
     display: flex;
     justify-content: left;
     align-items: center;
   }
+
   .logo {
     margin: 0 15px 0 0;
     height: 40px;
   }
+
   .tagline {
     display: flex;
     align-items: inherit;
@@ -109,10 +105,12 @@ button {
     color: $base-gray;
     font-size: 24px;
     font-weight: normal;
+
     p {
       margin: 0;
       font-weight: bold;
     }
+
     @include tab {
       font-size: 18px;
     }
@@ -122,6 +120,7 @@ button {
     }
   }
 }
+
 .footer-lp {
   padding: 40px 0 20px;
   background: $laycome-base;
@@ -130,13 +129,16 @@ button {
   @include sp {
     padding: 40px 20px 20px;
   }
+
   a {
     color: $base-black;
     font-size: 14px;
+
     &:hover {
-      color: darken ($base-gray,20%);
+      color: darken ($base-gray, 20%);
     }
   }
+
   .footer-link {
     max-width: 600px;
     margin: 0 auto;
@@ -144,10 +146,12 @@ button {
     @include sp {
       text-align: left;
     }
+
     dt {
       margin: 30px auto;
       font-size: 20px;
     }
+
     dd {
       display: inline-block;
       margin: .25em .5em;
@@ -156,18 +160,21 @@ button {
         margin: 1em 0;
       }
     }
+
     dd:nth-child(1) {
       display: block;
     }
   }
+
   .copyright {
     margin: 60px auto;
-    color: ($base-gray,20%);
+    color: ($base-gray, 20%);
     letter-spacing: 2px;
     font-weight: 300;
     font-family: Arial, Helvetica, sans-serif;
   }
 }
+
 .section-title {
   position: relative;
   max-width: 1200px;
@@ -191,17 +198,20 @@ button {
     text-indent: .5em;
   }
 }
+
 .mv {
   padding: 50px 0 0;
   text-align: center;
   @include sp {
     padding: 20px 0 40px;
   }
+
   .innerWrap {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
+
   .mv-img {
     @include tab {
       width: 60%;
@@ -213,6 +223,7 @@ button {
       margin-bottom: 20px;
     }
   }
+
   .content {
     width: 510px;
     @include tab {
@@ -221,6 +232,7 @@ button {
       padding: 0 10px;
     }
   }
+
   .title {
     width: 450px;
     margin: .5em auto;
@@ -238,46 +250,55 @@ button {
       font-size: 40px;
     }
   }
+
   p {
     font-size: 18px;
     @include sp {
       font-size: 14px;
     }
+
     .note-iragent-lead {
       display: block;
       margin-top: 10px;
       font-size: .75rem;
     }
   }
+
   .btn-regi {
     margin: 30px auto 0;
   }
 }
+
 .faq {
   .list-qa {
     border-top: 1px solid lighten($laycome-color-grey, 20%);
+
     dt::before {
-      content:"Q";
+      content: "Q";
       margin-right: 10px;
       color: $laycome-color-red;
       font-family: Arial, Helvetica, sans-serif;
       font-weight: bold;
     }
+
     dd::before {
-      content:"A";
+      content: "A";
       margin-right: 10px;
       color: $laycome-color-blue;
       font-family: Arial, Helvetica, sans-serif;
       font-weight: bold;
     }
-    dt,dd {
+
+    dt, dd {
       padding: 1em;
       font-size: 1.4rem;
       text-indent: -1em;
     }
+
     dt {
       padding-left: 2em;
     }
+
     dd {
       margin-left: 0;
       padding-top: 0;
@@ -286,6 +307,7 @@ button {
     }
   }
 }
+
 .card-vr {
   display: flex;
   flex-direction: column;
@@ -293,10 +315,11 @@ button {
   width: calc(30% - 40px);
   max-width: 600px;
   margin: 1.5%;
-  border: 1px solid lighten($laycome-color-dark-grey,30%);
+  border: 1px solid lighten($laycome-color-dark-grey, 30%);
   padding: 20px;
   background: $base-gray;
-  box-shadow: 0 2px 4px rgba(0,0,0,.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+
   &::before {
     content: "▶︎";
     position: absolute;
@@ -307,40 +330,47 @@ button {
       content: "";
     }
   }
+
   &:first-of-type {
     &::before {
-      content:"";
+      content: "";
     }
   }
+
   @include tab {
     width: 80%;
     margin-bottom: 10px;
   }
+
   .catch {
     margin: .5em auto .75em;
     text-align: center;
     font-size: 30px;
     font-weight: 200;
-    color: darken($base-gray,50%);
+    color: darken($base-gray, 50%);
     @include sp {
       margin: .0 auto;
     }
+
     span {
       display: block;
       font-family: roboto;
       @include sp {
-        display: inline!important;
+        display: inline !important;
         margin-right: 10px;
       }
     }
   }
+
   .card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     img {
       width: 150px;
     }
+
     @include tab {
       flex-direction: row;
       img {
@@ -357,6 +387,7 @@ button {
     }
   }
 }
+
 .flow {
   .innerWrap {
     display: flex;
@@ -370,7 +401,7 @@ button {
       align-items: center;
     }
   }
-}  
+}
 
 ////// PAGE:LP //////
 .lp {
@@ -384,27 +415,34 @@ button {
   .terms {
     margin-right: 20px;
     margin-left: 20px;
-    section:last-child{
+
+    section:last-child {
       margin-bottom: 100px;
     }
   }
+
   .page-header {
     margin: 1.5em 0;
   }
+
   ol {
     margin-left: -1em;
   }
+
   .brackets-list {
     margin: 1em -1em 1em;
+
     li {
       list-style-type: none;
       counter-increment: cnt;
     }
+
     li::before {
       content: "(" counter(cnt) ") ";
       margin-left: -1.75em;
     }
   }
+
   .enactment-date {
     margin-bottom: 3em;
     padding-top: 2em;
