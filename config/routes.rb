@@ -26,4 +26,6 @@ Rails.application.routes.draw do
     resources :requests
   end
   resources :credit_cards
+
+  get '/lp/cosplayer' => 'lp#cosplayer'
 end

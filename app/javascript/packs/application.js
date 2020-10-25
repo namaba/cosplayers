@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 import 'bootstrap-material-design'
 import '../stylesheets/application'
+import '../stylesheets/lp'
 
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
