@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'welcome#index'
   get '/privacy' => 'welcome#privacy'
+  get '/terms' => 'welcome#terms'
+
   # 作品の新規登録、編集、削除用
   namespace :creater do
     resources :works
