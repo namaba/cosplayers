@@ -1,9 +1,45 @@
+scss:
+  .image_preview {
+    img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
 .nested-fields.mt-5
   .field
     = image_tag url_for(f.object.photo_image) if f.object.photo_image.attached?
+    .image_preview
     .row
       .col-10
-        = f.file_field :photo_image
+        = f.file_field :photo_image, class: 'image_file'
       .col-2
         = link_to_remove_association "削除", f, class: 'btn btn-secondary'
     = f.text_area :description, rows: 2, class: 'form-control form-control-sm mt-3', placeholder: '作品説明'
+
+javascript:
+  $(".image_file").on("change", function(e) {
+    var imagePreview = $(this).closest('.row').prev('.image_preview');
+    console.log(imagePreview.prop('class'))
+    var files = e.target.files;
+    var d = new $.Deferred().resolve();
+    $.each(files, function(i, file) {
+      d = d.then(function() {
+        return previewImage(file);
+      });
+    });
+    var previewImage = function(imageFile) {
+      var reader = new FileReader();
+      var img = new Image();
+      var def = $.Deferred();
+      reader.onload = function(e) {
+        // 画像を表示
+        imagePreview.empty();
+        imagePreview.append(img);
+        img.src = e.target.result;
+        def.resolve(img);
+      };
+      reader.readAsDataURL(imageFile);
+      return def.promise();
+    };
+  });
+
