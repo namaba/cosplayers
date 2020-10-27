@@ -1,26 +1,4 @@
 scss:
-  $sp: 499px;
-  $tab: 899px;
-  $pc: 1200px;
-
-  @mixin sp {
-    @media (max-width: $sp) {
-      @content;
-    }
-  }
-
-  @mixin tab {
-    @media (max-width: $tab) {
-      @content;
-    }
-  }
-
-  @mixin pc {
-    @media (max-width: $pc) {
-      @content;
-    }
-  }
-
   a {
     color: #212529;
   }
@@ -34,14 +12,14 @@ scss:
   }
 
   .pc {
-    @include tab {
+    @media (max-width: 990px) {
       display: none;
     }
   }
 
   .sp {
     display: none;
-    @include sp {
+    @media (max-width: 499px) {
       display: block;
     }
   }
