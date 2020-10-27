@@ -38,7 +38,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top
       .sp
         - if user_signed_in?
           - if current_user.creater
-            li.nav-item= link_to '投稿する', new_creater_work_path(current_user.creater), class: "nav-link"
+            li.nav-item= link_to '投稿する', new_creater_work_path, class: "nav-link"
             li.nav-item= link_to 'マイページ', creater_path(current_user.creater), class: "nav-link"
             li.nav-item.dropdown
               .nav-link.dropdown-toggle[id="dropdownAccountMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"] 管理メニュー
@@ -63,7 +63,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top
     .d-flex
       - if user_signed_in?
         - if current_user.creater
-          = link_to '投稿する', new_creater_work_path(current_user.creater), class: 'btn btn-primary btn-raised mb-0'
+          = link_to '投稿する', new_creater_work_path, class: 'btn btn-primary btn-raised mb-0'
           = link_to 'マイページ', creater_path(current_user.creater), class: 'btn btn-link mb-0'
         - else
           button.btn.btn-success data-target="#needCreaterModal" data-toggle="modal" type="button"
