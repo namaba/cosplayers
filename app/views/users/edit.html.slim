@@ -1,11 +1,11 @@
-.container
-  .col-8.mx-auto
+.container.pt-4
+  .col-md-8.mx-auto
     .card
       .card-header.text-center
         h4.font-weight-bold.mb-0 ユーザー編集
-      .card-body.col-8.mx-auto
+      .card-body.col-md-7.mx-auto.text-center
         = form_with model: current_user, local: true do |f|
-          .form-group.mt-3
+          .form-group
             = f.label 'プロフィール画像', class: 'bmd-label-floating'
             .mb-3= image_tag f.object.avatar.variant(resize_to_limit: [200,200]) if f.object.avatar.attached?
             = f.file_field :avatar
