@@ -12,7 +12,7 @@
   article.my-4
     .d-flex.justify-content-between.align-items-center.mb-2
       h5.p-2.font-weight-bold 最新の作品
-      span.small= link_to 'もっとみる >', photos_path
+      span.small.mr-3= link_to 'もっとみる >', photos_path
     .d-flex.flex-wrap
       - @photos.each do |photo|
         .image-card
@@ -28,7 +28,7 @@
   article.my-5
     .d-flex.justify-content-between.align-items-center.mb-2
       h5.p-2.font-weight-bold コスプレイヤー
-      span.small= link_to 'もっとみる >', creaters_path, class: ''
+      span.small.mr-3= link_to 'もっとみる >', creaters_path, class: ''
     .d-flex.flex-wrap
       - @creaters.each do |creater|
         .image-card
