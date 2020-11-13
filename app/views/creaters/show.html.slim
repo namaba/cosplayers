@@ -41,13 +41,13 @@ scss:
 
     .col-12.col-md-8
       - if current_user_is?(@creater) && @creater.photos.present?
-        = link_to '投稿する', new_creater_work_path(current_user.creater), class: 'btn btn-primary btn-raised mt-3'
+        = link_to '投稿する', new_creater_work_path, class: 'btn btn-primary btn-raised mt-3'
       article.my-4
         h5.font-weight-bold 公開作品
         - if @creater.photos.blank?
           p まだ作品がありません。
           - if current_user_is?(@creater)
-            = link_to '投稿する', new_creater_work_path(current_user.creater), class: 'btn btn-primary btn-raised'
+            = link_to '投稿する', new_creater_work_path, class: 'btn btn-primary btn-raised'
         - else
           .d-flex.flex-wrap
             - @photos.each do |photo|
