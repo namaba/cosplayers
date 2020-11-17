@@ -39,6 +39,7 @@ button {
   color: $base-black;
   font-size: 30px;
   cursor: pointer;
+  color: white;
   @include sp {
     font-size: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
@@ -266,6 +267,7 @@ button {
 
   .btn-regi {
     margin: 30px auto 0;
+    color: white;
   }
 }
 
