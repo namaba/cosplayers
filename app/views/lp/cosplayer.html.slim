@@ -109,16 +109,16 @@
   section.btn-outer
     = link_to '登録はこちらから', new_user_registration_path, class: 'btn-regi'
   footer.footer-lp
-    dl.footer-link
-      dt Laycomeについて
-      dd
-        a href=""  運営会社
-      dd
-        a href=""  利用規約（求職者）
-      dd
-        a href=""  お問い合わせ
+    / dl.footer-link
+    /   dt Laycomeについて
+    /   dd
+    /     a href=""  運営会社
+    /   dd
+    /     a href=""  利用規約（求職者）
+    /   dd
+    /     a href=""  お問い合わせ
     .copyright
-      | \&copy;
+      | &copy;
       javascript:
-        | new Date().getFullYear()>2016&&document.write(new Date().getFullYear());
-      | , Laycome, Inc.
+        | new Date().getFullYear()>2016 && document.write(new Date().getFullYear());
+      |  Laycome, Inc.
