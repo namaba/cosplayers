@@ -37,7 +37,7 @@ class Request < ApplicationRecord
 
   belongs_to :user
   belongs_to :creater
-  has_one :work
+  belongs_to :work, optional: true
   has_one :bill
 
   enum genre: {

@@ -1,4 +1,9 @@
 scss:
+  .photo {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
   .image_preview {
     img {
       width: 100%;
@@ -7,7 +12,7 @@ scss:
   }
 .nested-fields.mt-5
   .field
-    = image_tag url_for(f.object.photo_image) if f.object.photo_image.attached?
+    = image_tag url_for(f.object.photo_image), class: 'photo' if f.object.photo_image.attached?
     .image_preview
     .row
       .col-10
@@ -19,7 +24,8 @@ scss:
 javascript:
   $(".image_file").on("change", function(e) {
     var imagePreview = $(this).closest('.row').prev('.image_preview');
-    console.log(imagePreview.prop('class'))
+    var photo = imagePreview.prev('.photo')
+    console.log(photo)
     var files = e.target.files;
     var d = new $.Deferred().resolve();
     $.each(files, function(i, file) {
@@ -37,6 +43,7 @@ javascript:
         imagePreview.append(img);
         img.src = e.target.result;
         def.resolve(img);
+        photo.hide();
       };
       reader.readAsDataURL(imageFile);
       return def.promise();
