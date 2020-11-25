@@ -3,7 +3,7 @@ scss:
     width: 100%;
   }
 
-.container
+.container.pt-4
   .card.mb-3
     .card-body
       h3.mb-4= "リクエスト詳細： #{@request.status_i18n}"
@@ -15,17 +15,20 @@ scss:
       - if @request.making?
         .text-center.mt-4
           = link_to '辞退する', decline_creater_request_path(@request.creater, @request), class: 'btn btn-secondary mr-3'
-          = link_to '作業完了', complete_creater_request_path(@request.creater, @request), class: "btn btn-raised btn-success #{'disabled' if @request.works.blank?}"
+            / = link_to '作業完了', complete_creater_request_path(@request.creater, @request), class: "btn btn-raised btn-success #{'disabled' unless @request.work}"
   - if @request.status.in?(%w[making completed])
     .card
       .card-body
         - if @request.making?
-          = link_to '作品を追加・編集する', edit_creater_request_path(@request.creater, @request), class: 'btn btn-primary btn-raised'
-        - if @request.works.present?
+          - if @request.work
+            = link_to '作品を追加・編集する', edit_creater_work_path(@request.work), class: 'btn btn-primary btn-raised'
+          -else
+            = link_to '作品を追加・編集する', new_creater_work_path(request_id: @request.id), class: 'btn btn-primary btn-raised'
+        - if @request.work
           .d-flex.flex-wrap.align-items-center
-            - @request.works.each do |work|
+            - @request.work.photos.each do |photo|
               .col-4.mb-3
-                = image_tag url_for(work.photo), class: 'photo'
+                = image_tag url_for(photo.photo_image), class: 'photo'
         - else
           p まだ作品がありません。作品を追加してください
 

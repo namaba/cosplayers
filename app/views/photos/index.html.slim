@@ -1,4 +1,4 @@
-.container
+.container.pt-4
   h5.p-2.font-weight-bold 作品集
   .d-flex.flex-wrap
     - @photos.each do |photo|
@@ -8,5 +8,5 @@
             = image_tag photo.photo_image.variant(combine_options:{gravity: :center, resize:"200x200^", crop:"200x200+0+0"}).processed, class: 'card-img-top'
             .p-2
               .card-text= photo.user.username
-              .card-text= photo.description&.truncate(15)
+              / .card-text= photo.description&.truncate(15)
   = paginate @photos
