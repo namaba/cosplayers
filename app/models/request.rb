@@ -19,25 +19,26 @@
 #  updated_at   :datetime         not null
 #  creater_id   :bigint           not null
 #  user_id      :bigint           not null
+#  work_id      :bigint
 #
 # Indexes
 #
 #  index_requests_on_creater_id  (creater_id)
 #  index_requests_on_user_id     (user_id)
+#  index_requests_on_work_id     (work_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (creater_id => creaters.id)
 #  fk_rails_...  (user_id => users.id)
+#  fk_rails_...  (work_id => works.id)
 #
 class Request < ApplicationRecord
 
   belongs_to :user
   belongs_to :creater
+  has_one :work
   has_one :bill
-
-  has_many :works, dependent: :nullify
-  accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
 
   enum genre: {
     photo: 'photo',

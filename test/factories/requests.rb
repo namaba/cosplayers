@@ -19,16 +19,19 @@
 #  updated_at   :datetime         not null
 #  creater_id   :bigint           not null
 #  user_id      :bigint           not null
+#  work_id      :bigint
 #
 # Indexes
 #
 #  index_requests_on_creater_id  (creater_id)
 #  index_requests_on_user_id     (user_id)
+#  index_requests_on_work_id     (work_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (creater_id => creaters.id)
 #  fk_rails_...  (user_id => users.id)
+#  fk_rails_...  (work_id => works.id)
 #
 FactoryBot.define do
   factory :request do

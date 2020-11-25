@@ -24,8 +24,9 @@ scss:
         - if @request.works.present?
           .d-flex.flex-wrap.align-items-center
             - @request.works.each do |work|
-              .col-4.mb-3
-                = image_tag url_for(work.photo), class: 'photo'
+              - if work.photo.attached?
+                .col-4.mb-3
+                  = image_tag url_for(work.photo), class: 'photo'
         - else
           p まだ作品がありません。作品を追加してください
 

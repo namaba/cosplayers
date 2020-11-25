@@ -14,7 +14,7 @@ class Creater::WorksController < ApplicationController
     @work = current_user.creater.works.build(work_params)
 
     if @work.save
-      back_path =  @work.request_id? ? creater_request_path(current_user.creater.id, @work.request) :  creater_path(current_user.creater)
+      back_path =  @work.request ? creater_request_path(current_user.creater.id, @work.request) :  creater_path(current_user.creater)
       redirect_to back_path, notice: '投稿しました'
     else
       flash.now[:alert] = '投稿に失敗しました'
@@ -34,7 +34,6 @@ class Creater::WorksController < ApplicationController
   def work_params
     params.required(:work).permit(
       :creater_id,
-      :request_id,
       :is_published,
       photos_attributes: [:id, :work_id, :description, :photo_image, :_destroy]
     )
