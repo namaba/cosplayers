@@ -3,7 +3,7 @@ scss:
     width: 100%;
   }
 
-.container
+.container.pt-4
   .card.mb-3
     .card-body
       h3.mb-4= "リクエスト詳細： #{@request.status_i18n}"
@@ -20,7 +20,7 @@ scss:
     .card
       .card-body
         - if @request.making?
-          = link_to '作品を追加・編集する', edit_creater_request_path(@request.creater, @request), class: 'btn btn-primary btn-raised'
+          = link_to '作品を追加・編集する', new_creater_work_path(request_id: @request.id), class: 'btn btn-primary btn-raised'
         - if @request.works.present?
           .d-flex.flex-wrap.align-items-center
             - @request.works.each do |work|
