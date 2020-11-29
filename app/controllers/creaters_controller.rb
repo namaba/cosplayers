@@ -14,9 +14,11 @@ class CreatersController < ApplicationController
     @creater = current_user.build_creater(creater_params)
 
     if @creater.save
+      @creater.identifying! if @creater.identity_document.attached?
       redirect_to current_user, notice: 'コスプレイヤーになりました'
     else
-      render :new, alert: '保存できませんでした'
+      flash.now[:alert]= @creater.errors.full_messages.join("\n")
+      render :new
     end
   end
 
@@ -25,6 +27,16 @@ class CreatersController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @creater.update(creater_params)
+      @creater.identifying! if !@creater.identified? && @creater.identity_document.attached?
+      redirect_to current_user, notice: '更新しました'
+    else
+      flash.now[:alert] = @creater.errors.full_messages.join("\n")
+      render :edit
+    end
   end
 
   private
@@ -41,7 +53,8 @@ class CreatersController < ApplicationController
     params.required(:creater).permit(
       :description,
       :min_charge,
-      :is_accepting
+      :is_accepting,
+      :identity_document
     )
   end
 end

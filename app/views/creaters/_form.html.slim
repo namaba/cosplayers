@@ -4,6 +4,16 @@
       label
         | リクエスト募集
         = f.check_box :is_accepting, :as => :boolean, checked: true, label: false, inline_label: true
+      .small.text-muted ※リクエスト募集するためには本人確認が必要です。
+  .form-group
+    = f.label '本人確認書類', class: 'bmd-label-floating'
+    / .mb-3= image_tag f.object.identity_document.variant(resize_to_limit: [200, 200]) if f.object.identity_document.attached?
+    - if creater.unidentified?
+      = f.file_field :identity_document, class: 'form-control'
+    - elsif creater.identifying?
+      p 審査中
+    - else creater.identified?
+      p 確認済み
 
   .form-group
     = f.label Creater.human_attribute_name(:min_charge), class: 'bmd-label-floating'

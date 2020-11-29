@@ -1,8 +1,8 @@
 .container
   - if user_signed_in? && !current_user.profile_complete?
-    .card.mb-5
+    .card.my-4
       .card-header
-        h5.font-weight-bold.mb-0 マイページを完成させよう
+        h5.font-weight-bold.mb-0 マイアトリエを完成させよう
       .card-body
         ul.list-unstyled.mb-0
           li= link_to '自己紹介を登録してください', edit_user_path(current_user), class: 'text-primary'  if current_user.introduction.blank?

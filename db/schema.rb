@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_072051) do
+ActiveRecord::Schema.define(version: 2020_11_28_061747) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", limit: 255, null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_072051) do
     t.text "description"
     t.integer "min_charge"
     t.boolean "is_accepting", default: true, null: false
+    t.string "identification", default: "unidentified", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_creaters_on_user_id"
