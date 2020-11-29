@@ -40,6 +40,10 @@
             = link_to 'コスプレイヤーになる', new_creater_path, class: 'btn btn-primary'
         - if current_user.creater
           dl.px-3.mb-0
+            dt 本人確認
+            dd.text-muted.mt-2= current_user.creater.identification_i18n
+          hr.mt-0
+          dl.px-3.mb-0
             dt リクエストの募集
             dd.text-muted.mt-2 募集中
           hr.mt-0
