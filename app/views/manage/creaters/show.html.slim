@@ -31,7 +31,8 @@
             .bg-light.d-flex.justify-content-center.align-items-center[style="height: 300px;"]
               div 本人確認書類が未提出です
 
-      .text-center.mt-4= link_to '本人確認承認', manage_creater_path(@creater),
-              method: :patch,
-              data: { confirm: '本当に承認してよろしいですか？' },
-              class: 'btn btn-raised btn-success'
+      - if @creater.identifying?
+        .text-center.mt-4= link_to '本人確認承認', manage_creater_path(@creater, creater: {identification: 'identified'}),
+                method: :patch,
+                data: { confirm: '本当に承認してよろしいですか？' },
+                class: 'btn btn-raised btn-success'

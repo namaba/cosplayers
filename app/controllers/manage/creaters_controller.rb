@@ -11,7 +11,7 @@ class Manage::CreatersController < Manage::ApplicationController
 
   def update
     if @creater.update(creater_params)
-      redirect_to current_user, notice: '更新しました'
+      redirect_to manage_creater_path(@creater), notice: '更新しました'
     else
       flash.now[:alert] = @creater.errors.full_messages.join("\n")
       render :show
