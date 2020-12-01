@@ -1,0 +1,38 @@
+.container
+  .card
+    .card-body
+      .row
+        .col-12.col-md-6
+          table.table
+            tr
+              th ID
+              td 1
+            tr
+              th 名前
+              td 難波謙介
+            tr
+              th リクエスト募集
+              td True
+            tr
+              th 本人確認
+              td= @creater.identification_i18n
+            tr
+              th 最低依頼金額
+              td 3000
+            tr
+              th 自己紹介
+              td よろしく
+
+
+        .col-12.col-md-6
+          - if @creater.identity_document.attached?
+            = image_tag url_for(@creater.identity_document), width: '100%'
+          - else
+            .bg-light.d-flex.justify-content-center.align-items-center[style="height: 300px;"]
+              div 本人確認書類が未提出です
+
+      - if @creater.identifying?
+        .text-center.mt-4= link_to '本人確認承認', manage_creater_path(@creater, creater: {identification: 'identified'}),
+                method: :patch,
+                data: { confirm: '本当に承認してよろしいですか？' },
+                class: 'btn btn-raised btn-success'

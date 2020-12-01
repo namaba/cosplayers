@@ -31,4 +31,9 @@ Rails.application.routes.draw do
   resources :credit_cards
 
   get '/lp/cosplayer' => 'lp#cosplayer'
+
+  namespace :manage do
+    root to: 'creaters#index'
+    resources :creaters
+  end
 end

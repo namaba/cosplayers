@@ -1,0 +1,20 @@
+.container
+  .card
+    .card-body
+      table.table.table-hover
+        thead.thead-dark
+          th ID
+          th 名前
+          th リクエスト募集
+          th 本人確認
+          th 本人確認書類提出
+          th
+        tbody
+          - @creaters.each do |creater|
+            tr[style="line-height: 2.5;"]
+              td= creater.id
+              td= creater.user.username
+              td= creater.is_accepting
+              td= creater.identification
+              td= creater.identity_document.attached?
+              td= link_to '詳細', manage_creater_path(creater.id), class: 'btn btn-sm btn-primary'

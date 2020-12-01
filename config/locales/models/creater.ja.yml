@@ -5,3 +5,11 @@ ja:
         description: 詳細情報
         min_charge: 最低金額
         is_accepting: リクエスト受付中
+        identity_document: 本人確認書類
+        identification: 本人確認
+  enums:
+    creater:
+      identification:
+        unidentified: 未確認
+        identifying: 審査中
+        identified: 確認済み
